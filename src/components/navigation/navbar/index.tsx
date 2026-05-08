@@ -1,12 +1,10 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import useVersionSync from '~/actions/useVersionSync'
-import UserCard from '~/components/card/user-card'
 import Logo from '~/components/global/main-logo'
 import { cn } from '~/utils'
 import { NAV_LINKS } from './links'
@@ -14,7 +12,6 @@ import MobileNav from './mobile-navbar'
 
 const Navbar = () => {
   const [scrolling, setIsScrolling] = useState<boolean>(false)
-  const { status } = useSession()
   const pathname = usePathname()
 
   const version = 'v1.0'
@@ -37,53 +34,47 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        'sticky left-0 right-0 top-0 z-40 bg-background',
-        scrolling ? 'shadow-md' : 'shadow-none'
+        'sticky left-0 right-0 top-0 z-40 bg-white',
+        scrolling ? 'shadow-md' : 'border-b shadow-none'
       )}
     >
       <div
         className={cn(
-          'relative mx-auto flex w-full max-w-[1200px] items-center gap-x-4 transition-all duration-500 md:justify-between',
-          scrolling ? 'py-2' : 'py-4 md:py-6',
-          status === 'authenticated' && 'justify-between md:justify-between'
+          'relative mx-auto flex w-full max-w-[1200px] items-center justify-between gap-x-4 px-4 transition-all duration-500 md:justify-between xl:px-0',
+          scrolling ? 'py-2' : 'py-4'
         )}
       >
-        <MobileNav />
-
         <Logo />
-        <div className="hidden w-full items-center justify-center gap-x-4 md:flex lg:gap-x-6">
+        <div className="hidden flex-1 items-center justify-center gap-x-6 md:flex lg:gap-x-10">
           {NAV_LINKS.map((item, index) => {
+            const isActive = pathname === item.link
             return (
               <Link
                 key={index}
                 href={item.link}
                 className={cn(
-                  'text-neutral-dark-1 p-3 text-[16px] font-medium capitalize transition-all duration-300 hover:text-primary',
-                  pathname === item.link ? 'text-primary' : ''
+                  'relative px-2 py-1 text-[16px] font-medium capitalize transition-all duration-300',
+                  isActive
+                    ? 'text-[#063660]'
+                    : 'text-neutral-dark-1 hover:text-[#063660]'
                 )}
               >
                 {item.route}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 block h-[2px] w-full bg-[#063660] transition-all"></span>
+                )}
               </Link>
             )
           })}
         </div>
-        {status !== 'authenticated' && (
-          <div className="w-fullx hidden items-center justify-end gap-x-4 justify-self-end md:flex lg:gap-x-8">
-            <Link
-              href="/login"
-              className="hover:bg-subtle grid h-[44px] place-items-center whitespace-nowrap rounded-md border border-primary px-4 text-primary lg:px-8"
-            >
-              Log in
-            </Link>
-            <Link
-              href="/register"
-              className="grid h-[44px] place-items-center whitespace-nowrap rounded-md border border-primary bg-primary px-4 text-white hover:bg-destructive lg:px-8"
-            >
-              Get Started
-            </Link>
-          </div>
-        )}
-        {status === 'authenticated' && <UserCard />}
+        <Link
+          href="/waitlist"
+          className="hidden h-[44px] place-items-center whitespace-nowrap rounded-xl bg-[#063660] px-6 font-medium text-white hover:bg-[#063660]/90 md:grid lg:px-8"
+        >
+          Join Waitlist
+        </Link>
+
+        <MobileNav />
       </div>
     </nav>
   )

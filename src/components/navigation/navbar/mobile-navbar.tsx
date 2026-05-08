@@ -61,13 +61,10 @@ export default function MobileNav() {
         }}
       />
 
-      <div
-        className="relative z-[999] shadow-xl shadow-black/20 md:hidden"
-        ref={scope}
-      >
+      <div className="relative z-[999] md:hidden" ref={scope}>
         <motion.button
           id="menu-button"
-          className={cn('flex flex-col justify-center gap-y-1')}
+          className={cn('flex flex-col justify-center gap-y-1.5')}
           onClick={() => setOpen(!open)}
           whileTap={{ scale: 0.95 }}
           data-menu-open={open}
@@ -77,7 +74,7 @@ export default function MobileNav() {
           ))}
         </motion.button>
         <ul
-          className="absolute left-0 top-10 overflow-hidden bg-white/90 pl-8 pt-1 backdrop-blur-lg"
+          className="absolute right-0 top-10 overflow-hidden bg-white/90 pl-6 pt-2 backdrop-blur-lg"
           data-menu-ul
         >
           {NAV_LINKS.map((link, index) => (
@@ -85,9 +82,7 @@ export default function MobileNav() {
               <Link
                 href={link.link}
                 key={link.route}
-                onClick={() => {
-                  setOpen(false)
-                }}
+                onClick={() => setOpen(false)}
                 className={cn(
                   'hover:text-accent-color text-neutral-dark-1 relative w-fit text-sm font-medium transition-colors duration-300'
                 )}
@@ -105,25 +100,14 @@ export default function MobileNav() {
           ))}
           <motion.li key={NAV_LINKS.length + 1}>
             <Link
-              href="/login"
+              href="/waitlist"
+              onClick={() => setOpen(false)}
               className={cn(
-                'grid max-w-[100px] place-items-center whitespace-nowrap rounded-md border border-primary px-2 py-2 text-sm text-primary',
+                'grid max-w-[100px] place-items-center whitespace-nowrap rounded-xl bg-[#063660] px-2 py-2 text-sm text-white',
                 user?.email ? 'hidden' : ''
               )}
             >
-              Log in
-            </Link>
-          </motion.li>
-
-          <motion.li key={NAV_LINKS.length + 2}>
-            <Link
-              href="/register"
-              className={cn(
-                'grid max-w-[100px] place-items-center whitespace-nowrap rounded-md border border-primary bg-primary px-2 py-2 text-sm text-white',
-                user?.email ? 'hidden' : ''
-              )}
-            >
-              Get Started
+              Join Waitlist
             </Link>
           </motion.li>
         </ul>

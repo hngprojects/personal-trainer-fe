@@ -2,24 +2,35 @@ import { Easy, Prebuilt, Scalable } from './svgs'
 
 const HowItWorks = () => {
   return (
-    <div className="bg-[#ffffff] py-20">
-      <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-10 xl:px-10">
-        <div className="flex flex-col items-center lg:flex-row">
-          <div className="w-full md:pr-10 lg:w-3/5 lg:pr-20">
-            <h1 className="font-inter text-3xl font-bold leading-snug md:text-4xl md:leading-tight">
+    // Main section wrapper
+    <section className="bg-[#ffffff] py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        {/* 
+          Responsive layout:
+          - Mobile: image/cards section comes FIRST
+          - Desktop: text section stays on the left
+        */}
+        <div className="flex flex-col-reverse items-center gap-14 lg:flex-row lg:gap-20">
+          {/* ================= LEFT CONTENT ================= */}
+          <div className="w-full lg:w-3/5">
+            <h1 className="font-inter text-3xl font-bold leading-snug md:text-4xl md:leading-tight lg:text-5xl">
               <span className="text-primary">How It Works:</span> Experience the
               benefits of using our product with every step.
             </h1>
-            <p className="font-inter mb-12 mt-6 text-lg font-normal">
-              {` We designed our product to simplify your life. It offers a comprehensive solution. Here's how it works and how it benefits you at each stage.`}
+
+            <p className="font-inter mt-6 text-base font-normal leading-7 text-gray-600 md:text-lg">
+              {`We designed our product to simplify your life. It offers a comprehensive solution. Here's how it works and how it benefits you at each stage.`}
             </p>
           </div>
 
-          <div className="flex w-full flex-col items-end md:items-start lg:w-2/5">
-            <div className="mb-9 flex space-x-5">
-              <div>
+          {/* ================= RIGHT FEATURES ================= */}
+          <div className="flex w-full flex-col gap-8 lg:w-2/5">
+            {/* Feature Card 1 */}
+            <div className="flex items-start gap-5">
+              <div className="shrink-0">
                 <Prebuilt />
               </div>
+
               <div>
                 <h3
                   className="font-inter mb-2 text-lg font-bold md:text-xl"
@@ -27,19 +38,22 @@ const HowItWorks = () => {
                 >
                   Pre-Built Sections
                 </h3>
+
                 <small
-                  className="font-inter text-base font-normal"
+                  className="font-inter text-sm leading-6 text-gray-600 md:text-base"
                   data-testid="section"
                 >
-                  {` Leverage pre-built sections like "Features," "Benefits," "Pricing," and "Testimonials" to showcase your product effectively.`}
+                  {`Leverage pre-built sections like "Features," "Benefits," "Pricing," and "Testimonials" to showcase your product effectively.`}
                 </small>
               </div>
             </div>
 
-            <div className="mb-9 flex space-x-5">
-              <div>
+            {/* Feature Card 2 */}
+            <div className="flex items-start gap-5">
+              <div className="shrink-0">
                 <Scalable />
               </div>
+
               <div>
                 <h3
                   className="font-inter mb-2 text-lg font-bold md:text-xl"
@@ -47,8 +61,9 @@ const HowItWorks = () => {
                 >
                   Scalable Foundation
                 </h3>
+
                 <small
-                  className="font-inter text-base font-normal"
+                  className="font-inter text-sm leading-6 text-gray-600 md:text-base"
                   data-testid="boilerplate"
                 >
                   Our boilerplate is designed to grow with your product. Easily
@@ -57,10 +72,12 @@ const HowItWorks = () => {
               </div>
             </div>
 
-            <div className="mb-9 flex space-x-5">
-              <div>
+            {/* Feature Card 3 */}
+            <div className="flex items-start gap-5">
+              <div className="shrink-0">
                 <Easy />
               </div>
+
               <div>
                 <h3
                   className="font-inter mb-2 text-lg font-bold md:text-xl"
@@ -68,8 +85,9 @@ const HowItWorks = () => {
                 >
                   Easy Customization
                 </h3>
+
                 <small
-                  className="font-inter text-base font-normal"
+                  className="font-inter text-sm leading-6 text-gray-600 md:text-base"
                   data-testid="tailor"
                 >
                   Tailor the experience to your specific needs and preferences
@@ -80,7 +98,7 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

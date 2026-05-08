@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import useVersionSync from '~/actions/useVersionSync'
-import UserCard from '~/components/card/user-card'
 import Logo from '~/components/global/main-logo'
 import { cn } from '~/utils'
 import { NAV_LINKS } from './links'
 import MobileNav from './mobile-navbar'
+import { Button } from '~/components/ui/button'
 
 const Navbar = () => {
   const [scrolling, setIsScrolling] = useState<boolean>(false)
@@ -38,18 +38,17 @@ const Navbar = () => {
     <nav
       className={cn(
         'sticky left-0 right-0 top-0 z-40 bg-background',
-        scrolling ? 'shadow-md' : 'shadow-none'
+        scrolling ? 'shadow-md' : 'shadow-sm'
       )}
     >
       <div
         className={cn(
-          'relative mx-auto flex w-full max-w-[1200px] items-center gap-x-4 transition-all duration-500 md:justify-between',
-          scrolling ? 'py-2' : 'py-4 md:py-6',
+          'container relative items-center gap-x-4 transition-all duration-500 md:justify-between',
+          scrolling ? 'py-2' : 'py-2.5 md:py-4',
           status === 'authenticated' && 'justify-between md:justify-between'
         )}
       >
         <MobileNav />
-
         <Logo />
         <div className="hidden w-full items-center justify-center gap-x-4 md:flex lg:gap-x-6">
           {NAV_LINKS.map((item, index) => {
@@ -67,23 +66,10 @@ const Navbar = () => {
             )
           })}
         </div>
-        {status !== 'authenticated' && (
-          <div className="w-fullx hidden items-center justify-end gap-x-4 justify-self-end md:flex lg:gap-x-8">
-            <Link
-              href="/login"
-              className="hover:bg-subtle grid h-[44px] place-items-center whitespace-nowrap rounded-md border border-primary px-4 text-primary lg:px-8"
-            >
-              Log in
-            </Link>
-            <Link
-              href="/register"
-              className="grid h-[44px] place-items-center whitespace-nowrap rounded-md border border-primary bg-primary px-4 text-white hover:bg-destructive lg:px-8"
-            >
-              Get Started
-            </Link>
-          </div>
-        )}
-        {status === 'authenticated' && <UserCard />}
+
+        <Button asChild size="lg">
+          <Link href="/register">join Wailist</Link>
+        </Button>
       </div>
     </nav>
   )

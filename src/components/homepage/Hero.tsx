@@ -5,140 +5,106 @@ import Link from 'next/link'
 import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { HeroBoilerPlate, HeroChat, HeroCheckMark } from './svgs'
+// Shadcn UI Components
+import { Button } from '../ui/button'
+import { HeroCheckMark } from './svgs'
 
 const Hero = () => {
-  //
-
   return (
     <div className="py-14 sm:py-20">
-      <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="flex flex-col items-center lg:flex-row">
+      <div className="container px-5">
+        <div className="flex flex-col items-center lg:flex-row lg:gap-16">
+          {/* Left Content Section */}
           <div className="w-full text-center sm:text-left lg:w-1/2">
-            <h1 className="mb-2 text-4xl font-bold leading-snug lg:mr-20 lg:text-[50px] lg:leading-tight">
-              Focus on What Matters. We&apos;ve Got the Foundation Covered.
-            </h1>
-
-            <div className="">
-              <Image
-                src="/images/hero-line.svg"
-                width={100}
-                height={100}
-                className="h-[50px] w-full"
-                alt=""
-              />
+            <div className="mb-4 inline-block rounded-full bg-blue-50 px-4 py-1 text-xs font-medium text-blue-900">
+              <span className="mr-2 inline-block h-2 w-2 rounded-full bg-blue-900"></span>
+              Live trainer accountability
             </div>
 
-            <p className="mb-8 mt-5 text-lg text-foreground md:mb-12 md:mt-7 md:text-xl">
-              Streamline your processes with a boilerplate built for efficiency
-              and optimal productivity.
+            {/* Responsive Heading: 4xl on mobile, 6xl on lg screens */}
+            <h1 className="mb-6 text-4xl font-extrabold tracking-tight lg:text-6xl lg:leading-[1.1]">
+              Stay consistent with real trainers
+            </h1>
+
+            <p className="mb-10 text-lg leading-relaxed text-muted-foreground md:text-xl lg:pr-10">
+              FitCall pairs you with a real Nigerian trainer who calls you for
+              every session, Zoom, WhatsApp, or audio. Real accountability,
+              structured workouts, zero excuses.
             </p>
 
-            <Link
-              href="/register"
-              className="rounded bg-primary px-8 py-4 text-background hover:bg-destructive"
-              data-testid="get-started"
-            >
-              Get Started
-            </Link>
+            {/* App Store Buttons - Classes removed, using Link asChild */}
+            <div className="flex flex-wrap justify-center gap-4 sm:justify-start md:mb-16">
+              <Button asChild size="lg">
+                <Link href="#" className="flex items-center gap-3">
+                  <Image
+                    src="/images/landing-page/apple.svg"
+                    alt="Applestore"
+                    width={22}
+                    height={22}
+                  />
+                  <span className="">Download on AppStore</span>
+                </Link>
+              </Button>
+
+              <Button asChild variant="outline" size="lg">
+                <Link href="#" className="flex items-center gap-3">
+                  <Image
+                    src="/images/landing-page/google-play.svg"
+                    alt="Playstore"
+                    width={22}
+                    height={22}
+                  />
+                  <span className="">Download on PlayStore</span>
+                </Link>
+              </Button>
+            </div>
+
+            {/* Stats Section */}
+            <div className="grid grid-cols-3 gap-8 border-t border-gray-100 pt-10">
+              <div className="space-y-1">
+                <p className="text-3xl font-bold tracking-tighter">10+</p>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Certified trainers
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-3xl font-bold tracking-tighter">12k+</p>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Sessions delivered
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-3xl font-bold tracking-tighter">94%</p>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Retention rate
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-14 flex w-full justify-end rounded-lg lg:mt-0 lg:w-1/2">
-            <div className="bg-subtle relative w-full rounded-lg sm:w-[90%] md:h-[300px] md:w-[95%] lg:h-[526px] lg:w-[418px]">
-              <div
-                data-testid="hero-checkmark"
-                className="absolute top-1/3 z-10 -translate-y-1/2 transform sm:left-[-2.2rem] md:left-[-3.5rem]"
-              >
+          {/* Right Image/Swiper Section */}
+          <div className="mt-14 flex w-full justify-center lg:mt-0 lg:w-1/2 lg:justify-end">
+            <div className="relative w-full max-w-[500px] overflow-hidden rounded-[2.5rem] md:h-[500px] lg:h-[600px]">
+              <div className="absolute left-4 top-1/4 z-20 -translate-x-1/2 transform">
                 <HeroCheckMark />
-              </div>
-
-              <div
-                data-testid="hero-chat"
-                className="absolute bottom-[-1.25rem] right-8 z-20"
-              >
-                <HeroChat />
-              </div>
-
-              <div
-                data-testid="hero-boilerplate"
-                className="absolute bottom-8 z-30 sm:left-[-0.75rem] md:left-[-3.75rem]"
-              >
-                <HeroBoilerPlate />
               </div>
 
               <Swiper
                 modules={[Pagination, Scrollbar, A11y, Autoplay]}
-                spaceBetween={1}
+                spaceBetween={0}
                 slidesPerView={1}
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: false,
-                }}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
                 loop={true}
-                speed={1000}
-                data-testid="swiper"
+                speed={1200}
+                className="h-full w-full"
               >
                 <SwiperSlide>
                   <Image
-                    src="/images/hero-image.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image2.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image3.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image4.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image5.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image6.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
+                    src="/images/landing-page/hero.png"
+                    alt="Professional Trainer"
+                    fill
+                    className="object-cover"
+                    priority
                   />
                 </SwiperSlide>
               </Swiper>

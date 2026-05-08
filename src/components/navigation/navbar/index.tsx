@@ -35,7 +35,7 @@ const Navbar = () => {
       <div
         className={cn(
           'container flex items-center justify-between transition-all duration-500',
-          scrolling ? 'py-2' : 'py-3 md:py-5'
+          scrolling ? 'py-2.5' : 'py-3.5 md:py-5'
         )}
       >
         <div className="flex items-center">

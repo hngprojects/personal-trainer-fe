@@ -15,7 +15,7 @@ const CTASection = () => {
               and feel the difference one phone call makes.
             </p>
 
-            <Button className="mt-10 bg-white font-bold text-primary transition-transform hover:scale-105 active:scale-95">
+            <Button className="mt-10 min-w-[300px] bg-white font-bold text-primary transition-transform hover:scale-105 active:scale-95">
               Start Free Trial
             </Button>
           </div>

@@ -111,7 +111,7 @@
   color: white;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary;
+  background: #063660;
   border: 4px solid transparent;
   border-radius: 10px;
   background-clip: content-box;
@@ -128,9 +128,9 @@
 }
 
 /* For Firefox */
-.html {
-  @apply bg-primary;
-  scrollbar-width: thin; /* Options are 'auto', 'thin', 'none' */
+html {
+  scrollbar-color: #063660 hsla(0, 0%, 0%, 0.06); /* thumb track */
+  scrollbar-width: thin;
 }
 
 /* For Internet Explorer and Legacy Edge */

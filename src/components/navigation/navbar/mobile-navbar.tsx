@@ -1,7 +1,7 @@
 import './menu.css'
 
 import { motion, stagger, useAnimate } from 'framer-motion'
-import { useSession } from 'next-auth/react'
+
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -11,8 +11,6 @@ import { NAV_LINKS } from './links'
 export default function MobileNav() {
   const [open, setOpen] = useState(false)
   const [scope, animate] = useAnimate()
-  const { data: session } = useSession()
-  const user = session?.user
 
   // the stagger effect
   const staggerList = stagger(0.1, { startDelay: 0.25 })

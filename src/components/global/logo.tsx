@@ -9,14 +9,9 @@ const Logo = ({ size }: Properties) => {
   return (
     <>
       {isSmall ? (
-        <Image
-          src="/images/logo(small).svg"
-          alt="small"
-          width={40}
-          height={38}
-        />
+        <Image src="/images/logo-icon.svg" alt="small" width={40} height={38} />
       ) : (
-        <Image src="/images/logo-text.png" alt="large" width={57} height={52} />
+        <Image src="/images/logo-text.svg" alt="large" width={57} height={52} />
       )}
     </>
   )

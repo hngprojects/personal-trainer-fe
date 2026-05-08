@@ -113,7 +113,7 @@ const Footer = () => {
                 <Link
                   key={index}
                   href={item.link}
-                  arial-label={item.name}
+                  aria-label={item.name}
                   className="text-neutral-dark-2 flex items-center justify-center transition-colors hover:text-[#063660]"
                 >
                   <item.icon className="h-6 w-6" />

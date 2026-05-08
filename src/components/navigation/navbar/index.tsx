@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-
 import useVersionSync from '~/actions/useVersionSync'
 import Logo from '~/components/global/main-logo'
 import { cn } from '~/utils'
@@ -22,9 +21,7 @@ const Navbar = () => {
     const handleScrollEvent = () => {
       setIsScrolling(window.scrollY > 1)
     }
-
     window.addEventListener('scroll', handleScrollEvent)
-
     return () => window.removeEventListener('scroll', handleScrollEvent)
   }, [])
 
@@ -67,12 +64,9 @@ const Navbar = () => {
 
         {/* ================= RIGHT SECTION ================= */}
         <div className="flex items-center">
-          {/* Desktop Button */}
-          <Button asChild size="lg" className="hidden md:inline-flex">
+          <Button asChild className="hidden md:inline-flex">
             <Link href="/register">Join Waitlist</Link>
           </Button>
-
-          {/* Mobile Menu Icon */}
           <div className="md:hidden">
             <MobileNav />
           </div>

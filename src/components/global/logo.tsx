@@ -10,7 +10,7 @@ const Logo = ({ size = 'big' }: Properties) => {
   return (
     <div className="flex items-center gap-2">
       <Image
-        src="/logo.svg"
+        src={isSmall ? '/logo.svg' : '/logo.svg'}
         alt="FitCall logo"
         width={isSmall ? 40 : 57}
         height={isSmall ? 38 : 52}

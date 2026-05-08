@@ -7,7 +7,7 @@ const Mission = () => {
         <div className="w-full md:pr-10 lg:mb-0 lg:w-3/4">
           <Image
             src="/images/about-us/our-mission.svg"
-            alt="mask"
+            alt="FitCall user story"
             width={130}
             height={300}
             className="w-full"
@@ -15,23 +15,31 @@ const Mission = () => {
         </div>
 
         <div className="mb-8 items-start lg:w-2/3">
-          <h3
-            className="mb-3 text-lg font-[700] text-primary sm:text-xl"
-            data-testid="mission web"
-          >
-            Our Mission & Vision
-          </h3>
-          <h3 className="mb-5 text-[30px] font-[600] leading-[38px] text-neutral-600 sm:leading-[42px] md:text-[35px] md:leading-[46px]">
-            Leading the Way, Redefining Industries
-          </h3>
-          <p
-            className="text-[16px] font-[400] text-neutral-600 sm:text-[17px] md:text-[18px]"
+          <div
+            className="flex flex-col gap-4 text-[16px] font-[400] text-neutral-600 sm:text-[17px] md:text-[18px]"
             data-testid="description web"
           >
-            At Hng Boilerplate, we are dedicated to exceeding your expectations.
-            We strive to understand your unique needs and challenges, providing
-            tailored solutions that drive real results and empower your success.
-          </p>
+            <p>
+              I had 47 saved workout videos on TikTok. Pilates for beginners.
+              20-minute home HIIT. &ldquo;Do this every morning and your life
+              will change.&rdquo; I watched none of them.
+            </p>
+            <p>
+              I wasn&apos;t lazy. I kept thinking I needed the perfect routine
+              and time. So I kept saving.
+            </p>
+            <p>
+              My friend sent me FitCall on a Tuesday night. I signed up mostly
+              to stop her from sending me things. Wednesday morning, 7am &mdash;
+              my phone rang. Not a notification. An actual call.
+            </p>
+            <p>
+              It was my trainer. I was half-asleep but she was already warmed
+              up. I had no excuses. We trained for 35 minutes. I was out of
+              breath by minute eight and laughing by minute twenty.
+            </p>
+            <p>I still have 47 saved videos I haven&apos;t opened.</p>
+          </div>
         </div>
       </div>
     </div>

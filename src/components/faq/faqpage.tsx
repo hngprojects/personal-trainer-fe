@@ -1,88 +1,39 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import useExternalStore from '~/hooks/external/use-external'
-import { getFaqs } from '~/actions/external/faq'
-import { FAQData } from '~/types'
-import { Skeleton } from '../ui/skeleton'
 import Heading from '../miscellaneous/heading'
 import FaqAccordion from './accordin'
 
-interface QueryRes {
-  data?: FAQData
-  success: boolean
-  message?: string
-  status_code?: number
-}
+const faqs = [
+  {
+    question: 'What is FitCall and how does it work?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  },
+  {
+    question: 'What types of training sessions does FitCall offer?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  },
+  {
+    question: 'How do I book a session with a FitCall trainer?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+  },
+]
 
 const FaqPage = () => {
-  const { setFAQs, faqs } = useExternalStore()
-
-  const { data, error, isLoading } = useQuery<QueryRes, Error>({
-    queryKey: ['faqs'],
-    queryFn: () => getFaqs(),
-  })
-
-  useEffect(() => {
-    if (data && data.success && data.data) {
-      setFAQs(data.data)
-    }
-  }, [data, setFAQs])
-
-  if (isLoading) {
-    return (
-      <main className="mx-auto max-w-7xl bg-white px-5 py-10 sm:bg-transparent md:px-10 lg:px-10 xl:px-10">
-        <Heading
-          tag="FAQS"
-          title="Frequently {{asked}} questions"
-          content="Questions you might ask about our product"
-        />
-        {Array.from({ length: 4 }).map((_, index) => (
-          <div
-            className="mb-3 w-full rounded-xl border border-border px-2 py-2"
-            key={index}
-          >
-            <Skeleton
-              className="h-[40px] w-full rounded-md"
-              data-testid="skeleton"
-            />
-          </div>
-        ))}
-      </main>
-    )
-  }
-
-  if (error) {
-    return <div>an error {error.message} occured </div>
-  }
-
   return (
     <main className="mx-auto max-w-7xl bg-white px-5 py-10 sm:bg-transparent md:px-10 lg:px-10 xl:px-10">
       <Heading
-        tag="FAQS"
-        title="Frequently {{asked}} questions"
-        content="Questions you might ask about our product"
+        tag="FAQ"
+        title="Frequently {{Asked}} Questions"
+        content="Everything you need to know about FitCall"
       />
       <div className="mx-auto mb-40 mt-4 max-w-xl">
-        {faqs ? (
-          <>
-            {Object.entries(faqs).map(
-              ([category, questions], categoryIndex) => (
-                <div key={categoryIndex} className="mb-6">
-                  <h2 className="mb-2 text-xl font-semibold">{category}</h2>
-                  <FaqAccordion
-                    faqs={questions}
-                    containerClassName="sm:w-full px-4 py-1 bg-white"
-                    data-testid="faq-accordion"
-                  />
-                </div>
-              )
-            )}
-          </>
-        ) : (
-          <p className="py-20 text-center">No results found.</p>
-        )}
+        <FaqAccordion
+          faqs={faqs}
+          containerClassName="sm:w-full px-4 py-1 bg-white"
+        />
       </div>
     </main>
   )

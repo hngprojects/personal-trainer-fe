@@ -6,15 +6,15 @@ const Hero = () => {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-8 md:px-10 lg:px-10 xl:px-10">
         <Heading
-          tag="About Us"
-          title="More Than {{Just}} A BoilerPlate"
-          content={`Welcome to Hng Boilerplate, where passion meets innovation. Discoverhow we started, the challenges we overcame, and the milestones thatdefine our journey.`}
+          tag="Our story"
+          title="Built for people who are {{tired}} of starting over."
+          content="Apps don't fix consistency. People do. FitCall pairs you with real trainers who guide every session, live, so you actually show up."
         />
 
         <div className="mt-[10px] w-full">
           <Image
             src="/images/about-us/aboutus1.svg"
-            alt="Hero_image"
+            alt="FitCall app preview"
             className="w-full"
             width={1036}
             height={355}

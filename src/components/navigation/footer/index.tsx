@@ -37,14 +37,17 @@ const Footer = () => {
     {
       icon: FaXTwitter,
       link: '/',
+      name: 'Twitter',
     },
     {
       icon: Instagram,
       link: '/',
+      name: 'Instagram',
     },
     {
       icon: Linkedin,
       link: '/',
+      name: 'Linkedin',
     },
   ]
 
@@ -110,6 +113,7 @@ const Footer = () => {
                 <Link
                   key={index}
                   href={item.link}
+                  arial-label={item.name}
                   className="text-neutral-dark-2 flex items-center justify-center transition-colors hover:text-[#063660]"
                 >
                   <item.icon className="h-6 w-6" />

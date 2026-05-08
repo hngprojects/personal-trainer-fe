@@ -61,7 +61,10 @@ const Navbar = () => {
               >
                 {item.route}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 block h-[2px] w-full bg-[#063660] transition-all"></span>
+                  <span
+                    aria-hidden
+                    className="absolute bottom-0 left-0 block h-[2px] w-full bg-[#063660] transition-all"
+                  ></span>
                 )}
               </Link>
             )

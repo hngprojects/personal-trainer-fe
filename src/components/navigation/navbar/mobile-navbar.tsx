@@ -25,7 +25,7 @@ export default function MobileNav() {
       'ul',
       {
         width: open ? 180 : 0,
-        height: open && user?.email ? 140 : open ? 250 : 0,
+        height: open ? 250 : 0,
         opacity: open ? 1 : 0,
       },
       {
@@ -44,7 +44,7 @@ export default function MobileNav() {
         delay: open ? staggerList : 0,
       }
     )
-  }, [animate, open, staggerList, user?.email])
+  }, [animate, open, staggerList])
 
   return (
     <>
@@ -103,8 +103,7 @@ export default function MobileNav() {
               href="/waitlist"
               onClick={() => setOpen(false)}
               className={cn(
-                'grid max-w-[100px] place-items-center whitespace-nowrap rounded-xl bg-[#063660] px-2 py-2 text-sm text-white',
-                user?.email ? 'hidden' : ''
+                'grid max-w-[100px] place-items-center whitespace-nowrap rounded-xl bg-[#063660] px-2 py-2 text-sm text-white'
               )}
             >
               Join Waitlist

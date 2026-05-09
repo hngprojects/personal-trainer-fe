@@ -4,10 +4,21 @@ import Image from 'next/image'
 import { A11y, Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-const images = [
-  { src: '/images/about-us/our-mission.png', alt: "Susan's story" },
-  { src: '/images/about-us/Franks-story.png', alt: "Frank's story" },
-]
+const story = {
+  name: "Susan's Story",
+  quote: '"I stopped watching other people workout"',
+  images: [
+    { src: '/images/about-us/our-mission.png', alt: "Susan's story" },
+    { src: '/images/about-us/Franks-story.png', alt: "Frank's story" },
+  ],
+  paragraphs: [
+    'I had 47 saved workout videos on TikTok. Pilates for beginners. 20-minute home HIIT. "Do this every morning and your life will change." I watched none of them.',
+    "I wasn't lazy. I kept thinking I needed the perfect routine and time. So I kept saving.",
+    'My friend sent me FitCall on a Tuesday night. I signed up mostly to stop her from sending me things. Wednesday morning, 7am — my phone rang. Not a notification. An actual call.',
+    'It was my trainer. I was half-asleep but she was already warmed up. I had no excuses. We trained for 35 minutes. I was out of breath by minute eight and laughing by minute twenty.',
+    "I still have 47 saved videos I haven't opened.",
+  ],
+}
 
 const StorySlider = () => {
   return (
@@ -17,11 +28,9 @@ const StorySlider = () => {
       </h2>
 
       <div className="mb-6">
-        <p className="mb-1 text-sm font-semibold text-primary">
-          Susan&apos;s Story
-        </p>
+        <p className="mb-1 text-sm font-semibold text-primary">{story.name}</p>
         <h3 className="text-xl font-bold text-neutral-900 md:text-2xl">
-          &ldquo;I stopped watching other people workout&rdquo;
+          {story.quote}
         </h3>
       </div>
 
@@ -35,7 +44,7 @@ const StorySlider = () => {
             loop={true}
             className="pb-10"
           >
-            {images.map((image, index) => (
+            {story.images.map((image, index) => (
               <SwiperSlide key={index}>
                 <Image
                   src={image.src}
@@ -51,26 +60,9 @@ const StorySlider = () => {
 
         <div className="rounded-lg border border-border p-6 lg:w-1/2">
           <div className="flex flex-col gap-4 text-[16px] text-neutral-600">
-            <p>
-              I had 47 saved workout videos on TikTok. Pilates for beginners.
-              20-minute home HIIT. &ldquo;Do this every morning and your life
-              will change.&rdquo; I watched none of them.
-            </p>
-            <p>
-              I wasn&apos;t lazy. I kept thinking I needed the perfect routine
-              and time. So I kept saving.
-            </p>
-            <p>
-              My friend sent me FitCall on a Tuesday night. I signed up mostly
-              to stop her from sending me things. Wednesday morning, 7am &mdash;
-              my phone rang. Not a notification. An actual call.
-            </p>
-            <p>
-              It was my trainer. I was half-asleep but she was already warmed
-              up. I had no excuses. We trained for 35 minutes. I was out of
-              breath by minute eight and laughing by minute twenty.
-            </p>
-            <p>I still have 47 saved videos I haven&apos;t opened.</p>
+            {story.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>

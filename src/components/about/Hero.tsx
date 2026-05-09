@@ -4,21 +4,21 @@ import Heading from '../miscellaneous/heading'
 const Hero = () => {
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-8 md:px-10 lg:px-10 xl:px-10">
+      <div className="mx-auto max-w-7xl px-5 py-6 md:px-10 md:py-16 lg:px-10 xl:px-10">
         <Heading
-          tag="About Us"
-          title="More Than {{Just}} A BoilerPlate"
-          content={`Welcome to Hng Boilerplate, where passion meets innovation. Discoverhow we started, the challenges we overcame, and the milestones thatdefine our journey.`}
+          tag="Our story"
+          title={'Built for people who are tired \nof starting over.'}
+          content={`Apps don't fix consistency. People do. FitCall pairs you with real trainers who guide every session, live, so you actually show up.`}
         />
 
-        <div className="mt-[10px] w-full">
+        <div className="w-full overflow-hidden">
           <Image
-            src="/images/about-us/aboutus1.svg"
+            src="/images/about-us/hero.svg"
             alt="Hero_image"
-            className="w-full"
-            width={1036}
-            height={355}
+            width={1280}
+            height={776}
             unoptimized
+            className="mx-auto h-[257px] w-[358px] rounded-xl object-cover md:h-[776px] md:w-[1280px] md:rounded-3xl"
           />
         </div>
       </div>

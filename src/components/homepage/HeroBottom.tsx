@@ -2,7 +2,7 @@ const IntegrationsBar = () => {
   const tools = ['Zoom', 'WhatsApp', 'Google Meet', 'Twitter', 'Facebook']
 
   return (
-    <section className="border-y border-gray-100 py-8">
+    <section className="mb-10 border-y border-gray-100 py-8">
       <div className="container flex flex-col items-center justify-between gap-6 md:flex-row">
         <p className="shrink-0 text-sm font-medium text-muted">
           Works with the tools you already use

@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import SectionHeader from '../ui/SectionHeader'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 
 interface Feature {
   icon: string
@@ -73,7 +74,10 @@ const WhyChoose = () => {
                   </div>
                 </div>
               ))}
-              <Button className="mx-2 mt-6 w-full">Choose a Plan</Button>
+              <Button className="mx-2 mt-6 w-full">
+                {' '}
+                <Link href="/pricing">Choose a Plan</Link>
+              </Button>
             </div>
           </div>
 

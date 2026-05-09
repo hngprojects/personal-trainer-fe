@@ -1,3 +1,4 @@
+import Link from 'next/dist/client/link'
 import { Button } from '../ui/button'
 
 const CTASection = () => {
@@ -16,7 +17,7 @@ const CTASection = () => {
             </p>
 
             <Button className="mt-10 min-w-[300px] bg-white font-bold text-primary transition-transform hover:scale-105 active:scale-95">
-              Start Free Trial
+              <Link href="/pricing">Start Free Trial</Link>
             </Button>
           </div>
         </div>

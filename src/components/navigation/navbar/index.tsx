@@ -65,7 +65,7 @@ const Navbar = () => {
         {/* ================= RIGHT SECTION ================= */}
         <div className="flex items-center">
           <Button asChild className="hidden md:inline-flex">
-            <Link href="/register">Join Waitlist</Link>
+            <Link href="/waitlist">Join Waitlist</Link>
           </Button>
           <div className="md:hidden">
             <MobileNav />

@@ -10,7 +10,7 @@ interface Properties {
 
 const TestimonialCard = (properties: Properties) => {
   return (
-    <div className="shadow-xs flex h-full min-h-[283px] flex-col justify-between rounded-[24px] border border-gray-100 p-4 lg:w-[330px]">
+    <div className="shadow-xs flex h-full min-h-[283px] flex-col justify-between rounded-[24px] border border-gray-100 bg-background p-4 lg:w-[330px]">
       <div>
         <div data-testid="rating" className="mb-6 flex justify-start">
           <Rating />

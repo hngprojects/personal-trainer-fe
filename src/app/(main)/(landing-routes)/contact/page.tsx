@@ -28,7 +28,7 @@ export default function ContactPage() {
                 <span className="text-primary">with us</span>
               </h1>
 
-              <p className="md:text-lg max-w-[480px] leading-relaxed text-muted">
+              <p className="mg:text-lg max-w-[480px] leading-relaxed text-muted">
                 Have questions about FitCall, trainers, or getting started?
                 We&apos;re here to help &mdash; no scripts, just real humans.
               </p>

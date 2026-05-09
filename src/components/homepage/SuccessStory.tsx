@@ -3,7 +3,7 @@ import SectionHeader from '../ui/SectionHeader'
 
 const SuccessStory = () => {
   return (
-    <section className="mt-16 w-full pb-14 md:mt-24">
+    <section className="w-full pb-14 md:mt-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="How FitCall changed my life"

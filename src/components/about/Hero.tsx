@@ -1,28 +1,32 @@
 import Image from 'next/image'
-import Heading from '../miscellaneous/heading'
+import SectionHeader from '../ui/SectionHeader'
 
 const Hero = () => {
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-6 md:px-10 md:py-16 lg:px-10 xl:px-10">
-        <Heading
-          tag="Our story"
-          title={'Built for people who are tired \nof starting over.'}
-          content={`Apps don't fix consistency. People do. FitCall pairs you with real trainers who guide every session, live, so you actually show up.`}
-        />
+    <section className="py-10 md:py-20">
+      <div className="container">
+        <div className="md:[&_h2]:text-5xl lg:[&_p]:text-lg">
+          <SectionHeader
+            badge="Our story"
+            title="Built for people who are tired of starting over."
+            description="Apps don't fix consistency. People do. FitCall pairs you with real trainers who guide every session, live, so you actually show up."
+            align="center"
+            className="mx-auto max-w-3xl"
+          />
+        </div>
 
-        <div className="w-full overflow-hidden">
+        <div className="relative mt-12 w-full overflow-hidden rounded-2xl md:rounded-3xl">
           <Image
-            src="/images/about-us/hero.svg"
+            src="/images/about-us/about.png"
             alt="Hero_image"
-            width={1280}
+            width={1080}
             height={776}
             unoptimized
-            className="mx-auto h-[257px] w-[358px] rounded-xl object-cover md:h-[776px] md:w-[1280px] md:rounded-3xl"
+            className="mx-auto h-auto w-full object-cover md:h-[500px] lg:h-[700px]"
           />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

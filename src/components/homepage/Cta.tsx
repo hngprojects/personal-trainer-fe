@@ -2,7 +2,7 @@ import { Button } from '../ui/button'
 
 const CTASection = () => {
   return (
-    <section className="mt-16 pb-14 md:mt-24">
+    <section className="bg-white py-20">
       <div className="container mx-auto px-4">
         <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-primary via-[#063660] to-[#0C6FC6] px-6 py-16 text-center text-white md:py-24">
           <div className="relative z-10 mx-auto max-w-2xl">

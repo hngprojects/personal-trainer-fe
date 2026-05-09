@@ -82,15 +82,7 @@ export function ContactForm() {
   }
 
   return (
-    /*
-      Card: white, rounded-[16px], border 1px #ECECEC, p-8 (32px), shadow
-      Scaled for a full laptop viewport — comfortable sizing
-    */
-    <div
-      className="w-full rounded-[16px] border border-[#ECECEC] bg-white p-8"
-      style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}
-    >
-      {/* Success */}
+    <div className="w-full rounded-lg border border-[#ECECEC] bg-white p-4 md:p-6">
       {submitSuccess && (
         <div
           className="mb-5 flex items-start gap-3 rounded-[10px] bg-green-50 p-4 text-green-700"
@@ -108,7 +100,6 @@ export function ContactForm() {
         </div>
       )}
 
-      {/* Error */}
       {submitError && (
         <div
           className="mb-5 flex items-start gap-3 rounded-[10px] bg-red-50 p-4 text-red-700"
@@ -125,12 +116,10 @@ export function ContactForm() {
       )}
 
       <Form {...form}>
-        {/* gap-5 = 20px between field rows */}
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-5"
         >
-          {/* Row 1: Full Name + Email — gap-5 = 20px between columns */}
           <div className="grid grid-cols-2 gap-5">
             <FormField
               control={form.control}
@@ -230,22 +219,17 @@ export function ContactForm() {
 
           {/* Footer row */}
           <div className="flex items-center justify-between gap-4 pt-1">
-            <p className="text-[13px] leading-[1.5] text-[#666666]">
+            <p className="text-[13px] leading-[1.5] text-muted-foreground">
               By sending, you agree to our friendly{' '}
               <Link
                 href="/legal/privacy-policy"
-                className="font-semibold text-[#0B4D8D] underline"
+                className="font-semibold text-primary underline"
               >
                 privacy terms
               </Link>
               .
             </p>
-            {/* Button: h-11=44px, rounded-[10px], #0B4D8D, 14px/600 */}
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-flex h-[44px] flex-shrink-0 items-center gap-2 rounded-[10px] bg-[#0B4D8D] px-5 text-[14px] font-semibold text-white hover:bg-[#083D70]"
-            >
+            <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send message'}
               {!isSubmitting && <ArrowRight className="h-4 w-4" />}
             </Button>

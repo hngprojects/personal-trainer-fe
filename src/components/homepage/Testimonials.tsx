@@ -15,7 +15,7 @@ import { testimonials } from './testimonials-data'
 
 const Testimonials = () => {
   return (
-    <section className="mt-16 overflow-hidden pb-14 md:mt-24">
+    <section className="mt-12 overflow-hidden pb-14 md:mt-24">
       <div className="container relative">
         <SectionHeader
           badge="Our Testimonial"

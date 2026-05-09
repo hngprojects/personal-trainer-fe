@@ -23,7 +23,7 @@ const renderTitle = (title: string) => {
 const Heading = (properties: Properties) => {
   return (
     <div
-      className="mx-auto mb-6 flex max-w-7xl flex-col items-center text-center md:mb-16 md:px-4"
+      className="mx-auto mb-6 flex max-w-7xl flex-col items-center px-4 text-center md:mb-16"
       data-testid="about-header"
     >
       <p
@@ -34,14 +34,14 @@ const Heading = (properties: Properties) => {
       </p>
 
       <h2
-        className="font-inter mx-auto mb-4 max-w-5xl whitespace-pre-line text-center text-2xl font-medium leading-[1.2] tracking-tight text-gray-900 md:text-4xl md:text-[64px] md:font-bold md:leading-[1.1]"
+        className="font-inter mx-auto mb-4 max-w-5xl whitespace-pre-line text-center text-3xl font-bold leading-[1.2] tracking-tight text-gray-900 md:text-5xl md:leading-[1.1] lg:text-[64px]"
         data-testid="about-title"
       >
         {renderTitle(properties.title)}
       </h2>
 
       <p
-        className="mx-auto max-w-3xl text-base leading-6 text-gray-600 md:text-lg lg:text-xl"
+        className="mx-auto max-w-3xl text-base leading-relaxed text-gray-600 md:text-lg lg:text-xl"
         data-testid="about-description"
       >
         {properties?.content}

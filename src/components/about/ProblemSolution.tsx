@@ -1,3 +1,5 @@
+import React from 'react'
+
 const problemSolution = [
   {
     title: 'The problem',
@@ -13,58 +15,23 @@ const problemSolution = [
 
 const ProblemSolution = () => {
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl bg-white px-5 py-6 md:px-10 md:py-20 lg:px-10 xl:px-10">
-        <div className="flex w-full flex-col items-start justify-between gap-8 md:flex-row md:gap-[192px]">
+    <section className="mt-16 pb-14 md:mt-24">
+      <div className="container">
+        <div className="flex flex-col gap-12 md:flex-row md:gap-24 lg:gap-48">
           {problemSolution.map((item, index) => (
-            <div key={index}>
-              <h3 className="mb-2 text-xl font-medium leading-6 text-[#1C1C1C] md:mb-6 md:text-3xl md:font-semibold">
+            <div key={index} className="flex-1">
+              <h3 className="mb-4 text-2xl font-bold tracking-tight text-muted-foreground md:mb-6 md:text-3xl">
                 {item.title}
               </h3>
-              <p className="text-base leading-6 text-neutral-600 md:text-xl">
+              <p className="text-base leading-relaxed text-muted md:text-lg md:leading-8">
                 {item.content}
               </p>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
 export default ProblemSolution
-{
-  /* {problemSolution.map((item, index) => {
-        return (
-          <div key={index}>
-          </div>
-        )} */
-}
-
-// <div className="mb-10 w-full md:pr-10 lg:w-3/5 lg:pr-20">
-//   <h3 className="mb-2 text-lg font-[600] text-primary sm:text-xl">
-//     Our Services
-//   </h3>
-
-//   <p className="relative w-full text-[30px] font-[600] leading-[34px] text-neutral-600 sm:w-[400px] sm:text-[36px] sm:leading-[42px] md:w-[400px] md:text-[40px] md:leading-[50px]">
-//     Trained to Give You The Best
-//     <span>
-//       <Image
-//         src="/images/about-us/ellipse.svg"
-//         alt="eclipse"
-//         width={100}
-//         height={15}
-//         className="absolute left-[80px] top-[35px] hidden max-sm:w-[50px] sm:top-[40px] sm:flex md:left-[90px] md:top-[45px]"
-//       />
-//     </span>
-//   </p>
-// </div>
-
-// <div className="items-start lg:w-2/3">
-//   <p className="text-[16px] leading-[30px] text-neutral-600 sm:text-[18px] sm:leading-[32px] md:leading-[35px]">
-//     Since our founding in, Hng Boilerplate has been dedicated to
-//     constantly evolving to stay ahead of the curve. Our agile mindset
-//     and relentless pursuit of innovation ensure that you&apos;re always
-//     equipped with the most effective tools and strategies.
-//   </p>
-// </div>

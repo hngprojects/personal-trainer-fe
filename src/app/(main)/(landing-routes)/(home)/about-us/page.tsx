@@ -4,6 +4,7 @@ import Hero from '~/components/about/Hero'
 import Join from '~/components/about/Join'
 import Mission from '~/components/about/Mission'
 import OurServices from '~/components/about/OurServices'
+import StorySlider from '~/components/about/StorySlider'
 
 const AboutUs = () => {
   return (
@@ -11,6 +12,7 @@ const AboutUs = () => {
       <Hero />
       <OurServices />
       <Mission />
+      <StorySlider />
       <CoreValues />
       <ExecutiveTeam />
       <Join />

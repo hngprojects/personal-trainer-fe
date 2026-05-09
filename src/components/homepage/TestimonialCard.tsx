@@ -5,12 +5,12 @@ interface Properties {
   image: string
   content: string
   name: string
-  location: string // Changed 'stack' to 'location' to match image (e.g., Atlanta, GA)
+  location: string
 }
 
 const TestimonialCard = (properties: Properties) => {
   return (
-    <div className="flex h-full min-h-[283px] flex-col justify-between rounded-[24px] border border-gray-100 bg-white p-4 shadow-sm lg:w-[330px]">
+    <div className="shadow-xs flex h-full min-h-[283px] flex-col justify-between rounded-[24px] border border-gray-100 p-4 lg:w-[330px]">
       <div>
         <div data-testid="rating" className="mb-6 flex justify-start">
           <Rating />

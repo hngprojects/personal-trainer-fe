@@ -4,149 +4,131 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-import { HeroBoilerPlate, HeroChat, HeroCheckMark } from './svgs'
+import { Button } from '../ui/button'
 
 const Hero = () => {
-  //
-
   return (
-    <div className="py-14 sm:py-20">
-      <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="flex flex-col items-center lg:flex-row">
-          <div className="w-full text-center sm:text-left lg:w-1/2">
-            <h1 className="mb-2 text-4xl font-bold leading-snug lg:mr-20 lg:text-[50px] lg:leading-tight">
-              Focus on What Matters. We&apos;ve Got the Foundation Covered.
+    <section className="w-full overflow-hidden py-10 sm:py-20">
+      <div className="container">
+        <div className="flex flex-col-reverse items-center gap-12 px-2 sm:flex-row lg:items-center">
+          <div className="w-full min-w-0 lg:w-1/2">
+            <div className="mb-4 inline-flex max-w-full flex-wrap items-center rounded-full bg-primarybadge px-4 py-2 text-xs font-medium text-primary">
+              <span className="mr-2 h-2 w-2 rounded-full bg-primary"></span>
+              Live trainer accountability
+            </div>
+            <h1 className="mb-6 break-words text-left text-3xl font-bold leading-tight tracking-tight text-muted-foreground sm:text-4xl md:text-5xl lg:text-6xl">
+              Stay consistent with real trainers
             </h1>
 
-            <div className="">
-              <Image
-                src="/images/hero-line.svg"
-                width={100}
-                height={100}
-                className="h-[50px] w-full"
-                alt=""
-              />
-            </div>
-
-            <p className="mb-8 mt-5 text-lg text-foreground md:mb-12 md:mt-7 md:text-xl">
-              Streamline your processes with a boilerplate built for efficiency
-              and optimal productivity.
+            <p className="mb-8 max-w-full break-words text-left text-base leading-relaxed text-muted lg:text-xl">
+              FitCall pairs you with a real Nigerian trainer who calls you for
+              every session, Zoom, WhatsApp, or audio. Real accountability,
+              structured workouts, zero excuses.
             </p>
 
-            <Link
-              href="/register"
-              className="rounded bg-primary px-8 py-4 text-background hover:bg-destructive"
-              data-testid="get-started"
-            >
-              Get Started
-            </Link>
+            <div className="mb-12 flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <Button asChild size="lg" className="w-full sm:w-auto">
+                <Link
+                  href="#"
+                  className="flex w-full items-center justify-center gap-3 text-center"
+                >
+                  <Image
+                    src="/images/landing-page/apple.svg"
+                    alt="Applestore"
+                    width={22}
+                    height={22}
+                  />
+
+                  <span className="truncate text-sm sm:text-base">
+                    Download on AppStore
+                  </span>
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                <Link
+                  href="#"
+                  className="flex w-full items-center justify-center gap-3 text-center"
+                >
+                  <Image
+                    src="/images/landing-page/google-play.svg"
+                    alt="Playstore"
+                    width={22}
+                    height={22}
+                  />
+
+                  <span className="truncate text-sm sm:text-base">
+                    Download on PlayStore
+                  </span>
+                </Link>
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-3 gap-0.5 text-center sm:text-left md:gap-8">
+              <div className="min-w-0">
+                <p className="text-2xl font-bold lg:text-3xl">10+</p>
+
+                <p className="mt-1 break-words text-xs font-medium tracking-wider text-muted">
+                  Certified trainers
+                </p>
+              </div>
+
+              <div className="min-w-0">
+                <p className="text-2xl font-bold lg:text-3xl">12k+</p>
+
+                <p className="mt-1 break-words text-xs font-medium tracking-wider text-muted">
+                  Sessions delivered
+                </p>
+              </div>
+
+              <div className="min-w-0">
+                <p className="text-2xl font-bold lg:text-3xl">94%</p>
+
+                <p className="mt-1 break-words text-xs font-medium tracking-wider text-muted-foreground">
+                  Retention rate
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-14 flex w-full justify-end rounded-lg lg:mt-0 lg:w-1/2">
-            <div className="bg-subtle relative w-full rounded-lg sm:w-[90%] md:h-[300px] md:w-[95%] lg:h-[526px] lg:w-[418px]">
-              <div
-                data-testid="hero-checkmark"
-                className="absolute top-1/3 z-10 -translate-y-1/2 transform sm:left-[-2.2rem] md:left-[-3.5rem]"
-              >
-                <HeroCheckMark />
-              </div>
-
-              <div
-                data-testid="hero-chat"
-                className="absolute bottom-[-1.25rem] right-8 z-20"
-              >
-                <HeroChat />
-              </div>
-
-              <div
-                data-testid="hero-boilerplate"
-                className="absolute bottom-8 z-30 sm:left-[-0.75rem] md:left-[-3.75rem]"
-              >
-                <HeroBoilerPlate />
-              </div>
-
+          <div className="flex w-full min-w-0 justify-center lg:w-1/2">
+            <div className="relative h-[320px] w-full max-w-[100%] overflow-hidden rounded-[2rem] sm:h-[420px] md:h-[500px] md:max-w-[500px] lg:h-[600px]">
+              {/* Swiper */}
               <Swiper
                 modules={[Pagination, Scrollbar, A11y, Autoplay]}
-                spaceBetween={1}
+                spaceBetween={0}
                 slidesPerView={1}
                 autoplay={{
                   delay: 5000,
                   disableOnInteraction: false,
                 }}
-                loop={true}
-                speed={1000}
-                data-testid="swiper"
+                loop
+                speed={1200}
+                className="h-full w-full"
               >
                 <SwiperSlide>
-                  <Image
-                    src="/images/hero-image.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image2.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image3.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image4.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image5.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Image
-                    src="/images/hero-image6.svg"
-                    alt="Hero Image"
-                    width={100}
-                    height={100}
-                    unoptimized
-                    className="h-[300px] w-full object-cover lg:h-[526px] lg:object-contain"
-                  />
+                  <div className="relative h-full w-full">
+                    <Image
+                      src="/images/landing-page/hero.png"
+                      alt="Professional Trainer"
+                      fill
+                      priority
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </SwiperSlide>
               </Swiper>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

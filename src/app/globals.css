@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
+    --background: 0, 0%, 100%, 1;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -20,21 +20,19 @@
     --default: 222 47% 11%;
     --default-foreground: 0 0% 100%;
 
-    --primary: 25 95% 53%;
-
+    --primary: 208, 88%, 20%, 1;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 0, 0%, 64%, 0.3;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0, 0%, 36%, 1;
+    --muted-foreground: 0, 0%, 11%, 1;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84% 60%;
-    --destructive-hover: 0 72% 51%;
+    --destructive: 208, 88%, 20%, 1 --destructive-hover: 208, 88%, 20%;
     --destructive-foreground: 0 0% 100%;
 
     --subtle: 210 40% 96%;
@@ -80,13 +78,23 @@
     --toast-border: 126, 50%, 58%;
 
     --default-badge-bg: 222, 47%, 11%, 0.1;
-    --primary-badge-bg: 25, 95%, 53%, 0.1;
+    --primary-badge-bg: 199, 100%, 27%, 0.1;
     --success-badge-bg: 102, 51%, 52%, 0.1;
     --error-badge-bg: 0, 72%, 51%, 0.1;
 
     --blog-related-article-bg: 0°, 0%, 98%;
     --blog-related-article-heading: 0°, 0%, 32%;
     --blog-related-article-timeread-bg: 220°, 14%, 96%;
+  }
+
+  body {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto w-full max-w-[1400px] px-6 lg:px-4;
   }
 }
 
@@ -100,10 +108,9 @@
   height: 0.1px;
   width: 0.1px;
 }
-/* Custom Scrollbar Styling */
-/* For Webkit Browsers */
+
 ::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 12px;
 }
 
 ::selection {
@@ -123,27 +130,25 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsla(0, 0%, 0%, 0.06); /* Color of the track */
-  border-radius: 10px; /* Rounded corners of the track */
+  background: hsla(0, 0%, 0%, 0.06);
+  border-radius: 10px;
 }
 
-/* For Firefox */
 .html {
   @apply bg-primary;
-  scrollbar-width: thin; /* Options are 'auto', 'thin', 'none' */
+  scrollbar-width: thin;
 }
 
-/* For Internet Explorer and Legacy Edge */
 body {
-  -ms-overflow-style: scrollbar; /* Standard scrollbar */
+  -ms-overflow-style: scrollbar;
 }
 
-/* Framer Btn */
 .radial-gradient {
   background:
     radial-gradient(circle at 50% 0%, hsl(25 95% 53%), transparent 60%),
     hsl(25 95% 53%);
 }
+
 .linear-mask {
   mask-image: linear-gradient(
     -75deg,
@@ -159,6 +164,7 @@ body {
     white calc(var(--x) + 100%)
   );
 }
+
 .linear-overlay {
   background: linear-gradient(
     -75deg,
@@ -176,21 +182,22 @@ body {
   -webkit-mask-composite: xor;
 }
 
-/* Framer Btn */
-
 .spinner_V8m1 {
   transform-origin: center;
   animation: spinner_zKoa 2s linear infinite;
 }
+
 .spinner_V8m1 circle {
   stroke-linecap: round;
   animation: spinner_YpZS 1.5s ease-in-out infinite;
 }
+
 @keyframes spinner_zKoa {
   100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes spinner_YpZS {
   0% {
     stroke-dasharray: 0 150;

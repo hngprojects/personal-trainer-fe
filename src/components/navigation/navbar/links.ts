@@ -1,5 +1,6 @@
 export const NAV_LINKS = [
-  { route: 'home', link: '/' },
+  { route: 'About Us', link: '/about' },
   { route: 'pricing', link: '/pricing' },
-  { route: 'careers', link: '/career' },
+  { route: 'Contact Us', link: '/contact' },
+  { route: 'Trainers', link: '/trainers' },
 ]

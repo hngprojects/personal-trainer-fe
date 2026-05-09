@@ -1,65 +1,59 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-
 import useVersionSync from '~/actions/useVersionSync'
-import UserCard from '~/components/card/user-card'
 import Logo from '~/components/global/main-logo'
 import { cn } from '~/utils'
 import { NAV_LINKS } from './links'
 import MobileNav from './mobile-navbar'
+import { Button } from '~/components/ui/button'
 
 const Navbar = () => {
   const [scrolling, setIsScrolling] = useState<boolean>(false)
-  const { status } = useSession()
   const pathname = usePathname()
 
   const version = 'v1.0'
   useVersionSync(version)
 
-  const handleScrollEvent = () => {
-    if (window.scrollY > 1) {
-      setIsScrolling(true)
-    } else {
-      setIsScrolling(false)
-    }
-  }
   useEffect(() => {
-    window.addEventListener('scroll', handleScrollEvent)
-
-    return () => {
-      window.removeEventListener('scroll', handleScrollEvent)
+    const handleScrollEvent = () => {
+      setIsScrolling(window.scrollY > 1)
     }
-  })
+    window.addEventListener('scroll', handleScrollEvent)
+    return () => window.removeEventListener('scroll', handleScrollEvent)
+  }, [])
+
   return (
     <nav
       className={cn(
-        'sticky left-0 right-0 top-0 z-40 bg-background',
-        scrolling ? 'shadow-md' : 'shadow-none'
+        'sticky left-0 right-0 top-0 z-40 bg-background transition-all duration-300',
+        scrolling ? 'shadow-md' : 'shadow-sm'
       )}
     >
       <div
         className={cn(
-          'relative mx-auto flex w-full max-w-[1200px] items-center gap-x-4 transition-all duration-500 md:justify-between',
-          scrolling ? 'py-2' : 'py-4 md:py-6',
-          status === 'authenticated' && 'justify-between md:justify-between'
+          'container flex items-center justify-between transition-all duration-500',
+          scrolling ? 'py-2.5' : 'py-3.5 md:py-5'
         )}
       >
-        <MobileNav />
+        <div className="flex items-center">
+          <Logo />
+        </div>
 
-        <Logo />
-        <div className="hidden w-full items-center justify-center gap-x-4 md:flex lg:gap-x-6">
+        {/* ================= DESKTOP NAVIGATION ================= */}
+        <div className="hidden items-center justify-center gap-x-2 md:flex lg:gap-x-4">
           {NAV_LINKS.map((item, index) => {
+            const isActive = pathname === item.link
+
             return (
               <Link
                 key={index}
                 href={item.link}
                 className={cn(
-                  'text-neutral-dark-1 p-3 text-[16px] font-medium capitalize transition-all duration-300 hover:text-primary',
-                  pathname === item.link ? 'text-primary' : ''
+                  'p-3 text-[16px] font-medium capitalize transition-all duration-300 hover:text-primary',
+                  isActive ? 'text-primary' : 'text-muted-foreground'
                 )}
               >
                 {item.route}
@@ -67,23 +61,16 @@ const Navbar = () => {
             )
           })}
         </div>
-        {status !== 'authenticated' && (
-          <div className="w-fullx hidden items-center justify-end gap-x-4 justify-self-end md:flex lg:gap-x-8">
-            <Link
-              href="/login"
-              className="hover:bg-subtle grid h-[44px] place-items-center whitespace-nowrap rounded-md border border-primary px-4 text-primary lg:px-8"
-            >
-              Log in
-            </Link>
-            <Link
-              href="/register"
-              className="grid h-[44px] place-items-center whitespace-nowrap rounded-md border border-primary bg-primary px-4 text-white hover:bg-destructive lg:px-8"
-            >
-              Get Started
-            </Link>
+
+        {/* ================= RIGHT SECTION ================= */}
+        <div className="flex items-center">
+          <Button asChild className="hidden md:inline-flex">
+            <Link href="/register">Join Waitlist</Link>
+          </Button>
+          <div className="md:hidden">
+            <MobileNav />
           </div>
-        )}
-        {status === 'authenticated' && <UserCard />}
+        </div>
       </div>
     </nav>
   )

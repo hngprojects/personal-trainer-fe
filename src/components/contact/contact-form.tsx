@@ -33,7 +33,9 @@ const formSchema = z.object({
     .string()
     .min(1, { message: 'Email is required.' })
     .email({ message: 'Please enter a valid email address.' }),
-  subject: z.string({ required_error: 'Please select a subject.' }),
+  subject: z
+    .string({ required_error: 'Please select a subject.' })
+    .min(1, { message: 'Please select a subject.' }),
   message: z
     .string()
     .min(10, { message: 'Message must be at least 10 characters.' }),
@@ -53,7 +55,7 @@ export function ContactForm() {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { fullName: '', email: '', subject: '', message: '' },
+    defaultValues: { fullName: '', email: '', subject: undefined, message: '' },
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -90,7 +92,12 @@ export function ContactForm() {
     >
       {/* Success */}
       {submitSuccess && (
-        <div className="mb-5 flex items-start gap-3 rounded-[10px] bg-green-50 p-4 text-green-700">
+        <div
+          className="mb-5 flex items-start gap-3 rounded-[10px] bg-green-50 p-4 text-green-700"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-500" />
           <div>
             <p className="text-sm font-semibold">Message sent successfully!</p>
@@ -103,7 +110,12 @@ export function ContactForm() {
 
       {/* Error */}
       {submitError && (
-        <div className="mb-5 flex items-start gap-3 rounded-[10px] bg-red-50 p-4 text-red-700">
+        <div
+          className="mb-5 flex items-start gap-3 rounded-[10px] bg-red-50 p-4 text-red-700"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
           <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500" />
           <div>
             <p className="text-sm font-semibold">Submission Error</p>
@@ -174,7 +186,7 @@ export function ContactForm() {
                 </FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  value={field.value}
                   disabled={isSubmitting}
                 >
                   <FormControl>

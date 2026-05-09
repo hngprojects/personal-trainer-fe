@@ -24,8 +24,8 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section className="w-full bg-[#F5F5F5] pb-[80px] pt-[80px]">
-      <div className="mx-auto w-full max-w-[1440px] px-[80px]">
+    <section className="w-full bg-[#F5F5F5] pb-12 pt-12 md:pb-[80px] md:pt-[80px]">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 md:px-8 lg:px-[80px]">
         {/* Centered, max-w 800px for readability on laptop */}
         <div className="mx-auto max-w-[800px] text-center">
           {/* Badge */}
@@ -37,8 +37,8 @@ export function FaqSection() {
 
           {/* Section Heading — 36px fills nicely at laptop width */}
           <h2
-            className="mb-3 mt-5 font-bold text-[#111111]"
-            style={{ fontSize: '36px', lineHeight: '1.15' }}
+            className="mb-3 mt-5 text-[24px] font-bold text-[#111111] md:text-[36px]"
+            style={{ lineHeight: '1.15' }}
           >
             Before you reach out...
           </h2>

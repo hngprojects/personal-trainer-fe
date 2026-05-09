@@ -16,11 +16,11 @@ export default function ContactPage() {
           Two columns: left text 40%, right form 60%, gap 72px.
           Padding: 80px top, 100px bottom.
       ──────────────────────────────────────────────────────────── */}
-      <section className="w-full pb-[100px] pt-[80px]">
-        <div className="mx-auto w-full max-w-[1440px] px-[80px]">
-          <div className="grid grid-cols-[2fr_3fr] items-start gap-[72px]">
+      <section className="w-full pb-16 pt-12 md:pb-[100px] md:pt-[80px]">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 md:px-8 lg:px-[80px]">
+          <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[2fr_3fr] md:gap-[72px]">
             {/* Left — text block, vertically centered relative to form */}
-            <div className="flex flex-col pt-8">
+            <div className="flex flex-col justify-center pt-8 md:justify-start">
               {/* Badge pill */}
               <div className="mb-7 inline-flex h-[32px] w-fit items-center gap-2 rounded-full bg-[#EAF4FF] px-4">
                 <span className="h-[8px] w-[8px] flex-shrink-0 rounded-full bg-[#0B4D8D]" />

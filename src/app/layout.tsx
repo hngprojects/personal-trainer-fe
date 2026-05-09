@@ -7,9 +7,14 @@ import { Providers } from './provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Fit Call',
-  description: 'Fit Call',
+  title: 'African Personal Trainer | FitCall.me',
+  description:
+    'FitCall.me connects users with professional African personal trainers through a modern and accessible fitness platform designed for training, wellness, and personalized coaching.',
+  icons: {
+    icon: '/logo.svg',
+  },
 }
+
 export default function RootLayout({
   children,
 }: Readonly<{

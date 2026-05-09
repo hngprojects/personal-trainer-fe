@@ -3,12 +3,12 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-
 import useVersionSync from '~/actions/useVersionSync'
 import Logo from '~/components/global/main-logo'
 import { cn } from '~/utils'
 import { NAV_LINKS } from './links'
 import MobileNav from './mobile-navbar'
+import { Button } from '~/components/ui/button'
 
 const Navbar = () => {
   const [scrolling, setIsScrolling] = useState<boolean>(false)
@@ -17,46 +17,43 @@ const Navbar = () => {
   const version = 'v1.0'
   useVersionSync(version)
 
-  const handleScrollEvent = () => {
-    if (window.scrollY > 1) {
-      setIsScrolling(true)
-    } else {
-      setIsScrolling(false)
-    }
-  }
   useEffect(() => {
-    window.addEventListener('scroll', handleScrollEvent)
-
-    return () => {
-      window.removeEventListener('scroll', handleScrollEvent)
+    const handleScrollEvent = () => {
+      setIsScrolling(window.scrollY > 1)
     }
-  })
+    window.addEventListener('scroll', handleScrollEvent)
+    return () => window.removeEventListener('scroll', handleScrollEvent)
+  }, [])
+
   return (
     <nav
       className={cn(
-        'sticky left-0 right-0 top-0 z-40 bg-white',
-        scrolling ? 'shadow-md' : 'border-b shadow-none'
+        'sticky left-0 right-0 top-0 z-40 bg-background transition-all duration-300',
+        scrolling ? 'shadow-md' : 'shadow-sm'
       )}
     >
       <div
         className={cn(
-          'relative mx-auto flex w-full max-w-[1200px] items-center justify-between gap-x-4 px-4 transition-all duration-500 md:justify-between xl:px-0',
-          scrolling ? 'py-2' : 'py-4'
+          'container flex items-center justify-between transition-all duration-500',
+          scrolling ? 'py-2.5' : 'py-3.5 md:py-5'
         )}
       >
-        <Logo />
-        <div className="hidden flex-1 items-center justify-center gap-x-6 md:flex lg:gap-x-10">
+        <div className="flex items-center">
+          <Logo />
+        </div>
+
+        {/* ================= DESKTOP NAVIGATION ================= */}
+        <div className="hidden items-center justify-center gap-x-2 md:flex lg:gap-x-4">
           {NAV_LINKS.map((item, index) => {
             const isActive = pathname === item.link
+
             return (
               <Link
                 key={index}
                 href={item.link}
                 className={cn(
-                  'relative px-2 py-1 text-[16px] font-medium capitalize transition-all duration-300',
-                  isActive
-                    ? 'text-[#063660]'
-                    : 'text-neutral-dark-1 hover:text-[#063660]'
+                  'p-3 text-[16px] font-medium capitalize transition-all duration-300 hover:text-primary',
+                  isActive ? 'text-primary' : 'text-muted-foreground'
                 )}
               >
                 {item.route}
@@ -70,14 +67,16 @@ const Navbar = () => {
             )
           })}
         </div>
-        <Link
-          href="/waitlist"
-          className="hidden h-[44px] place-items-center whitespace-nowrap rounded-xl bg-[#063660] px-6 font-medium text-white hover:bg-[#063660]/90 md:grid lg:px-8"
-        >
-          Join Waitlist
-        </Link>
 
-        <MobileNav />
+        {/* ================= RIGHT SECTION ================= */}
+        <div className="flex items-center">
+          <Button asChild className="hidden md:inline-flex">
+            <Link href="/register">Join Waitlist</Link>
+          </Button>
+          <div className="md:hidden">
+            <MobileNav />
+          </div>
+        </div>
       </div>
     </nav>
   )

@@ -105,7 +105,7 @@ const HowItWorks = () => {
   const [activeCategory, setActiveCategory] = useState('All')
 
   return (
-    <section className="mt-12 w-full pb-14 md:mt-24">
+    <section id="how-it-works" className="mt-12 w-full pb-14 md:mt-24">
       <div className="container flex flex-col">
         <SectionHeader
           badge="HOW IT WORKS"

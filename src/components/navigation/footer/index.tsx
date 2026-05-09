@@ -36,7 +36,7 @@ const Footer = () => {
               <ul className="space-y-3 text-sm text-muted">
                 <li>
                   <Link
-                    href="#"
+                    href="#how-it-works"
                     className="transition-colors hover:text-primary"
                   >
                     How it Works
@@ -44,7 +44,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/trainers"
                     className="transition-colors hover:text-primary"
                   >
                     Find Trainers
@@ -52,7 +52,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/pricing"
                     className="transition-colors hover:text-primary"
                   >
                     Pricing
@@ -60,7 +60,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/pricing"
                     className="transition-colors hover:text-primary"
                   >
                     Book Free Trial
@@ -73,7 +73,7 @@ const Footer = () => {
               <ul className="space-y-3 text-sm text-muted">
                 <li>
                   <Link
-                    href="#"
+                    href="/about-us"
                     className="transition-colors hover:text-primary"
                   >
                     About Us
@@ -81,7 +81,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/contact"
                     className="transition-colors hover:text-primary"
                   >
                     Become a Trainer
@@ -89,7 +89,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/contact"
                     className="transition-colors hover:text-primary"
                   >
                     Contact

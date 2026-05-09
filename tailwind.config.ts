@@ -24,6 +24,10 @@ const config: Config = {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
+        primarybadge: {
+          DEFAULT: 'hsl(var(--primary-badge-bg))',
+          foreground: 'hsl(var(--primarybadge-foreground))'
+        },
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
@@ -84,3 +88,4 @@ const config: Config = {
   plugins: [require("tailwindcss-animate")],
 };
 export default config;
+

@@ -29,7 +29,7 @@ pnpm install
 ```
 pnpm dev
 ```
-## Continuous Integration (CI)
+### Continuous Integration (CI)
 
 This project uses **GitHub Actions** for Continuous Integration. The pipeline runs automatically on every push and pull request targeting the `main` and `dev` branches.
 

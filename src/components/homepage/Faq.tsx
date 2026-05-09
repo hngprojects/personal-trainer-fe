@@ -29,7 +29,7 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="mt-16 pb-14 md:mt-24">
+    <section className="mt-12 pb-14 md:mt-24">
       <div className="container">
         <SectionHeader
           badge="FAQ"
@@ -48,7 +48,7 @@ const FAQSection = () => {
                 value={faq.value}
                 className="border-b border-gray-100 py-2"
               >
-                <AccordionTrigger className="py-6 text-left text-lg font-medium text-[#1D2939] hover:no-underline [&>svg]:hidden">
+                <AccordionTrigger className="py-6 text-left font-medium text-[#1D2939] hover:no-underline lg:text-lg [&>svg]:hidden">
                   <div className="flex w-full items-center justify-between">
                     <span>{faq.question}</span>
                     <svg
@@ -68,7 +68,7 @@ const FAQSection = () => {
                     </svg>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="pb-6 text-base leading-relaxed text-gray-500">
+                <AccordionContent className="pb-6 text-sm leading-relaxed text-gray-500 lg:text-base">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

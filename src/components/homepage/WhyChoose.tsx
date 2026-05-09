@@ -36,7 +36,7 @@ const features: Feature[] = [
 
 const WhyChoose = () => {
   return (
-    <section className="mt-16 w-full overflow-hidden pb-14 md:mt-24">
+    <section className="mt-12 w-full overflow-hidden pb-14 md:mt-24">
       <div className="container flex flex-col items-center">
         <SectionHeader
           badge="WHY CHOOSE FITCALL?"

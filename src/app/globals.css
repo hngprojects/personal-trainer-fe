@@ -23,7 +23,7 @@
     --primary: 208, 88%, 20%, 1;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0, 0%, 64%, 0.3;
+    --secondary: 0, 0%, 96%, 0.5;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 0, 0%, 36%, 1;
@@ -90,6 +90,22 @@
   body {
     @apply font-sans;
   }
+}
+
+.custom-bullet {
+  height: 8px !important;
+  width: 8px !important;
+  border-radius: 9999px !important;
+  transition:
+    width 300ms ease,
+    background-color 300ms ease !important;
+  background-color: #cbd5e1 !important; /* optional: visible inactive color */
+}
+
+.custom-bullet-active {
+  width: 32px !important;
+  background-color: #0b4d8d !important;
+  border-radius: 9999px !important;
 }
 
 @layer utilities {

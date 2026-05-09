@@ -39,7 +39,7 @@ const SectionHeader = ({
 
       <h2
         className={cn(
-          'text-3xl font-extrabold tracking-tight text-muted-foreground lg:text-4xl lg:leading-[1.1]'
+          'text-3xl font-bold tracking-tight text-muted-foreground lg:text-4xl lg:leading-[1.1]'
         )}
       >
         {title}

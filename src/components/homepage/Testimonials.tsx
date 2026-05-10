@@ -1,62 +1,73 @@
 'use client'
 
-import {
-  A11y,
-  Autoplay,
-  Navigation,
-  Pagination,
-  Scrollbar,
-} from 'swiper/modules'
+import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { ChevronLeft, ChevronRight } from 'lucide-react' // Using Lucide for the arrow icons
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import TestimonialCard from './TestimonialCard'
 import { testimonials } from './testimonials-data'
+import { cn } from '~/utils'
 
 const Testimonials = () => {
   return (
-    <section className="mt-12 overflow-hidden pb-14 md:mt-24">
-      <div className="container relative">
+    <section className="bg-[#fcfcfc] py-16 md:py-24">
+      <div className="container relative mx-auto px-4">
         <SectionHeader
-          badge="Our Testimonial"
+          badge="OUR TESTIMONIAL"
           title="What people are saying"
           description="Real reviews from people having real lifestyle changes"
           align="center"
         />
 
-        <div className="group relative mt-10 px-2">
-          <div className="block">
-            <button className="swiper-button-prev-custom absolute left-[-50px] top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition-all hover:bg-primary hover:text-white disabled:opacity-50">
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button className="swiper-button-next-custom absolute right-[-50px] top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition-all hover:bg-primary hover:text-white disabled:opacity-50">
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+        <div className="relative mx-auto mt-16 max-w-6xl">
+          {/* Navigation Arrows - Positioned to the sides of the cards */}
+          <button className="swiper-button-prev-custom absolute -left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white shadow-md transition-all hover:bg-slate-50 md:-left-16">
+            <ChevronLeft className="h-5 w-5 text-slate-400" />
+          </button>
+          <button className="swiper-button-next-custom absolute -right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-slate-100 bg-white shadow-md transition-all hover:bg-slate-50 md:-right-16">
+            <ChevronRight className="h-5 w-5 text-slate-400" />
+          </button>
+
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-            slidesPerView={1}
-            spaceBetween={4}
+            modules={[Navigation, Pagination, A11y, Autoplay]}
+            centeredSlides={true}
             loop={true}
+            slidesPerView={1}
+            spaceBetween={20}
+            breakpoints={{
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
             navigation={{
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',
             }}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 },
-            }}
-            className="pb-12"
+            className="!py-10"
           >
             {testimonials.map((item) => (
-              <SwiperSlide key={item.id}>
-                <TestimonialCard
-                  image={item.image}
-                  content={item.content}
-                  name={item.name}
-                  location={item.stack}
-                />
+              <SwiperSlide
+                key={item.id}
+                className="flex items-center justify-center"
+              >
+                {({ isActive }) => (
+                  <div
+                    className={cn(
+                      'w-full transition-all duration-500 ease-in-out',
+                      isActive
+                        ? 'z-10 scale-110 opacity-100'
+                        : 'scale-90 opacity-60 grayscale-[0.5]'
+                    )}
+                  >
+                    <TestimonialCard
+                      image={item.image}
+                      content={item.content}
+                      name={item.name}
+                      location={item.stack}
+                    />
+                  </div>
+                )}
               </SwiperSlide>
             ))}
           </Swiper>

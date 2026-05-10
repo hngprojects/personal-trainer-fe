@@ -1,13 +1,37 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
+import { joinWaitlist } from '~/lib/api/waitlist'
 import { Button } from '../ui/button'
+import { toast } from 'sonner'
 
 const Hero = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [message] = useState('')
+
+  const handleSubmit = async () => {
+    try {
+      setLoading(true)
+      const result = await joinWaitlist(email)
+      toast.success(result.message || 'Successfully joined waitlist')
+      setEmail('')
+      setName('')
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : 'Something went wrong'
+      )
+    } finally {
+      setLoading(false)
+    }
+  }
   return (
-    <section className="w-full overflow-hidden py-10 sm:py-20">
+    <section className="w-full overflow-hidden pt-32 md:pt-48">
       <div className="container">
         <div className="flex flex-col-reverse items-center gap-12 px-2 sm:flex-row lg:items-center">
           <div className="w-full min-w-0 lg:w-1/2">
@@ -30,14 +54,26 @@ const Hero = () => {
               <input
                 type="text"
                 placeholder="Full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="min-h-12 w-full rounded-md border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-muted outline-none focus:border-primary"
               />
+
               <input
                 type="email"
                 placeholder="johndoe@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="min-h-12 w-full rounded-md border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-muted outline-none focus:border-primary"
               />
-              <Button type="submit"> Submit</Button>
+
+              <Button type="button" onClick={handleSubmit} disabled={loading}>
+                {loading ? 'Submitting...' : 'Submit'}
+              </Button>
+
+              {message && (
+                <p className="text-sm text-muted-foreground">{message}</p>
+              )}
             </div>
           </div>
 

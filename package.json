@@ -1,5 +1,5 @@
 {
-  "name": "hng_boilerplate_nextjs",
+  "name": "fitcall.me",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -38,14 +38,14 @@
     "framer-motion": "^12.4.7",
     "lenis": "^1.1.22",
     "lucide-react": "^0.477.0",
-    "next": "15.2.0",
+    "next": "15.2.6",
     "next-auth": "5.0.0-beta.25",
     "next-nprogress-bar": "^2.4.7",
     "react": "^19.0.0",
     "react-day-picker": "9.5.1",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
-    "sonner": "^2.0.1",
+    "sonner": "^2.0.7",
     "swiper": "^11.2.4",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",

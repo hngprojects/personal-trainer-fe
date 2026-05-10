@@ -4,10 +4,10 @@ import { useState } from 'react'
 import SectionHeader from '../ui/SectionHeader'
 import CategoryFilter from './TrainersCatergory'
 import TrainerCard from './TrainersCard'
-import { categories, trainers } from './trianers'
+import { categories, Category, trainers } from './trianers'
 
 const TrainerSection = () => {
-  const [activeCategory, setActiveCategory] = useState('All')
+  const [activeCategory, setActiveCategory] = useState<Category>('All')
 
   const filtered =
     activeCategory === 'All'

@@ -86,10 +86,6 @@
     --blog-related-article-heading: 0°, 0%, 32%;
     --blog-related-article-timeread-bg: 220°, 14%, 96%;
   }
-
-  body {
-    @apply font-sans;
-  }
 }
 
 .custom-bullet {

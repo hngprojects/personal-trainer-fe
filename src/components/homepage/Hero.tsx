@@ -2,128 +2,109 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Button } from '../ui/button'
 
 const Hero = () => {
   return (
-    <section className="w-full overflow-hidden py-10 sm:py-20">
-      <div className="container">
-        <div className="flex flex-col-reverse items-center gap-12 px-2 sm:flex-row lg:items-center">
-          <div className="w-full min-w-0 lg:w-1/2">
-            <div className="mb-4 inline-flex max-w-full flex-wrap items-center rounded-full bg-primarybadge px-4 py-2 text-xs font-medium text-primary">
-              <span className="mr-2 h-2 w-2 rounded-full bg-primary"></span>
-              Live trainer accountability
-            </div>
-            <h1 className="mb-6 break-words text-left text-3xl font-bold leading-tight tracking-tight text-muted-foreground sm:text-4xl md:text-5xl lg:text-6xl">
-              Stay consistent with real trainers
-            </h1>
+    <section className="md:pt-38 relative w-full overflow-hidden pt-32">
+      <div
+        className="absolute inset-0 z-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }}
+      ></div>
 
-            <p className="mb-8 max-w-full break-words text-left text-base leading-relaxed text-muted lg:text-xl">
-              FitCall pairs you with a real Nigerian trainer who calls you for
-              every session, Zoom, WhatsApp, or audio. Real accountability,
-              structured workouts, zero excuses.
-            </p>
+      <div className="absolute -left-20 top-0 h-[600px] w-[600px] rounded-full bg-[#C2DCFF]/40 blur-[120px]"></div>
+      <div className="absolute -right-20 top-0 h-[600px] w-[600px] rounded-full bg-[#F5D9C0]/40 blur-[120px]"></div>
 
-            <div className="mb-12 flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link
-                  href="#"
-                  className="flex w-full items-center justify-center gap-3 text-center"
-                >
-                  <Image
-                    src="/images/landing-page/apple.svg"
-                    alt="Applestore"
-                    width={22}
-                    height={22}
-                  />
-
-                  <span className="truncate text-sm sm:text-base">
-                    Download on AppStore
-                  </span>
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                <Link
-                  href="#"
-                  className="flex w-full items-center justify-center gap-3 text-center"
-                >
-                  <Image
-                    src="/images/landing-page/google-play.svg"
-                    alt="Playstore"
-                    width={22}
-                    height={22}
-                  />
-
-                  <span className="truncate text-sm sm:text-base">
-                    Download on PlayStore
-                  </span>
-                </Link>
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-3 gap-0.5 text-center sm:text-left md:gap-8">
-              <div className="min-w-0">
-                <p className="text-2xl font-bold lg:text-3xl">10+</p>
-
-                <p className="mt-1 break-words text-xs font-medium tracking-wider text-muted">
-                  Certified trainers
-                </p>
-              </div>
-
-              <div className="min-w-0">
-                <p className="text-2xl font-bold lg:text-3xl">12k+</p>
-
-                <p className="mt-1 break-words text-xs font-medium tracking-wider text-muted">
-                  Sessions delivered
-                </p>
-              </div>
-
-              <div className="min-w-0">
-                <p className="text-2xl font-bold lg:text-3xl">94%</p>
-
-                <p className="mt-1 break-words text-xs font-medium tracking-wider text-muted-foreground">
-                  Retention rate
-                </p>
-              </div>
-            </div>
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-6 inline-flex items-center rounded-full border border-primary bg-transparent px-4 py-1.5 text-xs font-semibold text-blue-600 shadow-sm">
+            <span className="mr-2 h-2 w-2 animate-pulse rounded-full bg-blue-600"></span>
+            Live Trainer Accountability
           </div>
 
-          <div className="flex w-full min-w-0 justify-center lg:w-1/2">
-            <div className="relative h-[320px] w-full max-w-[100%] overflow-hidden rounded-[2rem] sm:h-[420px] md:h-[500px] md:max-w-[500px] lg:h-[600px]">
-              {/* Swiper */}
-              <Swiper
-                modules={[Pagination, Scrollbar, A11y, Autoplay]}
-                spaceBetween={0}
-                slidesPerView={1}
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: false,
-                }}
-                loop
-                speed={1200}
-                className="h-full w-full"
-              >
-                <SwiperSlide>
-                  <div className="relative h-full w-full">
-                    <Image
-                      src="/images/landing-page/hero.png"
-                      alt="Professional Trainer"
-                      fill
-                      priority
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
-                </SwiperSlide>
-              </Swiper>
+          <h1 className="mb-6 max-w-4xl text-4xl font-extrabold tracking-tight text-muted-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+            Stay Consistent With Real{' '}
+            <span className="relative mt-2 inline-block bg-primary px-4 py-1 text-white">
+              Trainers
+            </span>
+          </h1>
+
+          <p className="mb-10 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+            FitCall pairs you with a real Nigerian trainer who calls you for
+            every session, Zoom, WhatsApp, or audio. Real accountability,
+            structured workouts, zero excuses.
+          </p>
+
+          <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="#" className="flex items-center justify-center gap-3">
+                <Image
+                  src="/images/landing-page/apple.svg"
+                  alt="Apple"
+                  width={24}
+                  height={24}
+                />
+                <div className="text-left">
+                  <p className="text-[10px] uppercase leading-none opacity-80">
+                    Download on App Store
+                  </p>
+                </div>
+              </Link>
+            </Button>
+
+            <Button asChild variant="outline" size="lg" className="bg-white">
+              <Link href="#" className="flex items-center justify-center gap-3">
+                <Image
+                  src="/images/landing-page/google-play.svg"
+                  alt="Playstore"
+                  width={24}
+                  height={24}
+                />
+                <div className="text-left">
+                  <p className="text-[10px] uppercase leading-none opacity-80">
+                    Get it on PlayStore
+                  </p>
+                </div>
+              </Link>
+            </Button>
+          </div>
+
+          <div className="relative min-h-[21vh] w-full max-w-5xl md:h-[500px] lg:h-[600px]">
+            <div
+              className="absolute bottom-0 left-0 w-[38%]"
+              style={{ transform: 'translateY(0)' }}
+            >
+              <Image
+                src="/images/landing-page/hero2.png"
+                alt="App UI Left"
+                width={500}
+                height={600}
+                className="h-auto w-full opacity-80 shadow-2xl"
+              />
+            </div>
+
+            <div className="absolute bottom-0 left-1/2 z-10 w-[46%] -translate-x-1/2">
+              <Image
+                src="/images/landing-page/hero1.png"
+                alt="App UI Center"
+                width={500}
+                height={700}
+                className="h-auto w-full shadow-2xl transition-transform hover:scale-105"
+                priority
+              />
+            </div>
+
+            <div className="absolute bottom-0 right-0 w-[38%]">
+              <Image
+                src="/images/landing-page/hero2.png"
+                alt="App UI Right"
+                width={500}
+                height={600}
+                className="h-auto w-full opacity-80 shadow-2xl"
+              />
             </div>
           </div>
         </div>

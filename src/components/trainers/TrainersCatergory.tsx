@@ -1,7 +1,9 @@
+import type { Category } from './trianers'
+
 type Props = {
-  categories: string[]
-  active: string
-  onChange: (cat: string) => void
+  categories: readonly Category[]
+  active: Category
+  onChange: (cat: Category) => void
 }
 
 const CategoryFilter = ({ categories, active, onChange }: Props) => {

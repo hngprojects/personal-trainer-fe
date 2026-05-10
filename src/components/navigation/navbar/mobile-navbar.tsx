@@ -84,7 +84,7 @@ export default function MobileNav() {
 
               <div className={cn('border-t border-[#EBEBEB] px-6 py-6')}>
                 <Button asChild className="w-full">
-                  <Link href="/register" onClick={() => setOpen(false)}>
+                  <Link href="/waitlist" onClick={() => setOpen(false)}>
                     Join Waitlist
                   </Link>
                 </Button>

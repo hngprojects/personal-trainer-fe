@@ -1,0 +1,46 @@
+name: Continuous Deployment
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            cd /opt/personal-trainer-fe
+            git fetch origin
+            git reset --hard origin/dev
+            pnpm install
+            pnpm build
+            sudo systemctl restart personal-trainer-fe
+            sleep 5
+            sudo systemctl is-active --quiet personal-trainer-fe || exit 1

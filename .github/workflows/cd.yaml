@@ -1,9 +1,8 @@
-cat > .github/workflows/cd.yaml << 'EOF'
 name: Continuous Deployment
 
 on:
   push:
-    branches: [feat-cd-pipeline]
+    branches: [dev]
 
 jobs:
   deploy:
@@ -42,4 +41,3 @@ jobs:
             pnpm install
             pnpm build
             sudo systemctl restart personal-trainer-fe
-EOF

@@ -6,17 +6,14 @@ echo "styling your work" 🎨✨
 
 
 # Check Prettier standards
-pnpm run check-format ||
-(
+pnpm run check-format || {
     echo '🤢🤮🤢🤮 Its so ugly!! - Your styling looks disgusting. 🤢🤮🤢🤮
-            Prettier Check Failed. Running npm run format...';
-    npm run format;
-    git add .;
-    echo '✨ Formatting complete and changes added. Committing with the previous commit message...';
-    git commit --amend --no-edit;
-    echo '✅✅ Amended commit with the new changes. Please try to push again.';
-
-)
+            Prettier Check Failed. Running npm run format...'
+    npm run format
+    git add .
+    echo '✨ Formatting complete and changes staged. Please re-run your commit to include the fixes.'
+    exit 1
+}
 
 
 echo '🏗️👷 checking for eslint errors' 🔍🧐

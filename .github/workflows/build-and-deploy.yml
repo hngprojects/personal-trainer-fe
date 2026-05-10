@@ -1,0 +1,99 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [staging, main]
+
+jobs:
+  build-and-deploy:
+    if: github.event.repository.fork == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "23"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Next.js application
+        run: pnpm build
+
+      - name: Archive production artifacts
+        run: tar -czf boilerplate.tar.gz .next public package.json pnpm-lock.yaml
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Upload artifact to VPS
+        run: |
+          scp -i ~/.ssh/id_rsa \
+            -o StrictHostKeyChecking=no \
+            boilerplate.tar.gz \
+            ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/build-artifacts/
+
+      - name: Deploy on VPS
+        env:
+          SUDO_PASS: ${{ secrets.SUDO_PASSWORD }}
+        run: |
+          ssh -i ~/.ssh/id_rsa \
+            -o StrictHostKeyChecking=no \
+            ${{ secrets.USERNAME }}@${{ secrets.HOST }} << EOF
+              set -e
+
+              # Helper so every sudo call uses the secret non-interactively
+              sudo_run() {
+                echo "$SUDO_PASS" | sudo -S "\$@"
+              }
+
+              APP_DIR=~/app
+              ARTIFACT=~/build-artifacts/boilerplate.tar.gz
+
+              sudo_run mkdir -p \$APP_DIR
+              sudo_run chown -R \$USER:\$USER \$APP_DIR
+
+              # Extract build artifacts
+              tar -xzf \$ARTIFACT -C \$APP_DIR
+
+              cd \$APP_DIR
+
+              # Install only production dependencies
+              pnpm install --prod --frozen-lockfile
+
+              # Reload or start app with pm2 (zero-downtime)
+              pm2 reload boilerplate --update-env || pm2 start npm --name "boilerplate" -- start
+
+              # Persist pm2 across reboots (requires sudo)
+              sudo_run env PATH=\$PATH:/usr/bin pm2 startup systemd -u \$USER --hp \$HOME
+              pm2 save
+
+              # Clean up artifact
+              rm -f \$ARTIFACT
+          EOF
+
+      - name: Cleanup local artifact
+        if: always()
+        run: rm -f boilerplate.tar.gz

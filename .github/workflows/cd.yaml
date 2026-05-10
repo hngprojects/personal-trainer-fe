@@ -1,5 +1,9 @@
 name: Continuous Deployment
 
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
 on:
   push:
     branches: [dev]
@@ -16,17 +20,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'pnpm'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build the app
-        run: pnpm build
 
       - name: Deploy to server
         uses: appleboy/ssh-action@v1.2.0
@@ -36,8 +35,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            set -e
             cd /opt/personal-trainer-fe
-            git pull origin dev
+            git fetch origin
+            git reset --hard origin/dev
             pnpm install
             pnpm build
             sudo systemctl restart personal-trainer-fe
+            sleep 5
+            sudo systemctl is-active --quiet personal-trainer-fe || exit 1

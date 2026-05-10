@@ -13,8 +13,8 @@ const NotFound = () => {
         </h1>
 
         <p className="mb-10 text-base leading-relaxed text-muted">
-          This page doesn`&apo;t exist — but your trainer does. Head back home
-          and get moving.
+          This page doesnt exist, but your trainer does. Head back home and get
+          moving.
         </p>
 
         <Link

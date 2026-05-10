@@ -1,29 +1,26 @@
 import Image from 'next/image'
 
 interface Properties {
-  size: 'big' | 'small'
+  size?: 'big' | 'small'
 }
 
-const Logo = ({ size }: Properties) => {
+const Logo = ({ size = 'big' }: Properties) => {
   const isSmall = size === 'small'
+
   return (
-    <>
-      {isSmall ? (
-        <Image
-          src="/images/logo(small).svg"
-          alt="small"
-          width="40"
-          height="38"
-        />
-      ) : (
-        <Image
-          src="/images/logo(large).svg"
-          alt="large"
-          width="57"
-          height="52"
-        />
+    <div className="flex items-center gap-2">
+      <Image
+        src={isSmall ? '/logo.svg' : '/logo.svg'}
+        alt="FitCall logo"
+        width={isSmall ? 40 : 57}
+        height={isSmall ? 38 : 52}
+        className="object-contain"
+      />
+
+      {!isSmall && (
+        <span className="text-xl font-bold leading-none">FitCall</span>
       )}
-    </>
+    </div>
   )
 }
 

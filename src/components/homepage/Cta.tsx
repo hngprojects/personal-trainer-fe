@@ -17,7 +17,7 @@ const CTASection = () => {
             </p>
 
             <Button className="mt-10 min-w-[300px] bg-white font-bold text-primary transition-transform hover:scale-105 active:scale-95">
-              <Link href="/pricing">Start Free Trial</Link>
+              <Link href="/pricing">Get Fit Now</Link>
             </Button>
           </div>
         </div>

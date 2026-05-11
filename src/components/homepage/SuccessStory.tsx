@@ -10,7 +10,7 @@ const stories = [
   {
     name: "Susan's Story",
     quote: 'I stopped watching other people workout',
-    image: '/images/landing-page/success.png',
+    image: '/images/landing-page/success1.png',
     paragraphs: [
       'I had 47 saved workout videos on TikTok. Pilates for beginners. 20-minute home HIIT. Do this every morning and your life will change. I watched none of them.',
       "I wasn't lazy. I kept thinking I needed the perfect routine and time. So I kept saving.",

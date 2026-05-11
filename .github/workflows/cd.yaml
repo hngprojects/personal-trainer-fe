@@ -74,12 +74,17 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            set -e
-            cd /var/www/personal-trainer/frontend/staging
-            pnpm install --prod --frozen-lockfile
-            sudo /usr/bin/systemctl restart personal-trainer-frontend-staging
-            sleep 5
-            sudo /usr/bin/systemctl status personal-trainer-frontend-staging --no-pager
+            echo "=== whoami ==="
+            whoami
+            echo "=== id ==="
+            id
+            echo "=== which systemctl ==="
+            which systemctl
+            echo "=== sudo -ln ==="
+            sudo -ln
+            echo "=== try sudo with -n flag ==="
+            sudo -n /usr/bin/systemctl restart personal-trainer-frontend-staging
+            echo "=== exit code: $? ==="
 
   deploy-production:
     if: github.ref == 'refs/heads/main'

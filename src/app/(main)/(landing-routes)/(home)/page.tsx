@@ -6,13 +6,12 @@ import UserSection from '~/components/homepage/WhyChoose'
 import SuccessStory from '~/components/homepage/SuccessStory'
 import CTASection from '~/components/homepage/Cta'
 import FAQSection from '~/components/homepage/Faq'
-import IntegrationsBar from '~/components/homepage/HeroBottom'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <IntegrationsBar />
+
       <UserSection />
       <Features />
       <HowItWorks />

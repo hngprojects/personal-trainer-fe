@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+const interClass = 'font-sans'
 import './globals.css'
+import { Toaster } from 'sonner'
 import { cn } from '~/utils'
 import { Providers } from './provider'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'African Personal Trainer | FitCall.me',
@@ -22,8 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, 'max-w-[1920px] antialiased')}>
-        <Providers>{children}</Providers>
+      <body className={cn(interClass, 'max-w-[1920px] antialiased')}>
+        <Providers>
+          {children}
+          <Toaster richColors position="top-right" />
+        </Providers>
       </body>
     </html>
   )

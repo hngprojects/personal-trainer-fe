@@ -76,7 +76,7 @@ const WhyChoose = () => {
               ))}
               <Button className="mx-2 mt-6 w-full">
                 {' '}
-                <Link href="/pricing">Choose a Plan</Link>
+                <Link href="/pricing">Get Fit Now</Link>
               </Button>
             </div>
           </div>

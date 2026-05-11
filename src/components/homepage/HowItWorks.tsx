@@ -35,7 +35,7 @@ const CountdownTimer = () => {
       <div className="flex w-full max-w-xs flex-col items-center gap-4 rounded-2xl border border-[#EBEBEB] bg-white px-8 py-6 shadow-sm">
         <div className="flex items-center gap-2 text-sm text-[#5C5C5C]">
           <Image
-            src="/images/landing-page/icons/notification.png"
+            src="/images/landing-page/icons/noti.png"
             alt="Notification"
             width={20}
             height={20}

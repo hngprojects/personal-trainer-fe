@@ -19,7 +19,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScrollEvent = () => {
-      setIsScrolling(window.scrollY > 1)
+      setIsScrolling(window.scrollY > 10)
     }
     window.addEventListener('scroll', handleScrollEvent)
     return () => window.removeEventListener('scroll', handleScrollEvent)
@@ -28,21 +28,17 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        'sticky left-0 right-0 top-0 z-40 bg-background transition-all duration-300',
-        scrolling ? 'shadow-md' : 'shadow-sm'
+        'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
+        scrolling
+          ? 'bg-white/90 py-2.5 shadow-md backdrop-blur-md'
+          : 'bg-transparent py-4 md:py-6'
       )}
     >
-      <div
-        className={cn(
-          'container flex items-center justify-between transition-all duration-500',
-          scrolling ? 'py-2.5' : 'py-3.5 md:py-5'
-        )}
-      >
+      <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Logo />
         </div>
 
-        {/* ================= DESKTOP NAVIGATION ================= */}
         <div className="hidden items-center justify-center gap-x-2 md:flex lg:gap-x-4">
           {NAV_LINKS.map((item, index) => {
             const isActive = pathname === item.link
@@ -62,9 +58,11 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* ================= RIGHT SECTION ================= */}
         <div className="flex items-center">
-          <Button asChild className="hidden md:inline-flex">
+          <Button
+            asChild
+            className="hidden bg-[#0d2b45] text-white hover:bg-[#1a3a5f] md:inline-flex"
+          >
             <Link href="/waitlist">Join Waitlist</Link>
           </Button>
           <div className="md:hidden">

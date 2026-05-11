@@ -163,7 +163,7 @@ const Footer = () => {
             >
               <div className="relative h-4 w-4">
                 <Image
-                  src="/images/landing-page/Icons/insta.png"
+                  src="/images/landing-page/icons/insta.png"
                   alt="Instagram"
                   fill
                   sizes="true"

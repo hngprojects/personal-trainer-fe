@@ -1,6 +1,6 @@
 import React from 'react'
-import { Check } from 'lucide-react'
 import { Button } from '../ui/button'
+import Image from 'next/image'
 
 interface PricingCardProps {
   plan: {
@@ -28,7 +28,13 @@ const PricingCard = ({ plan }: PricingCardProps) => {
     >
       {isHighlighted && (
         <div className="absolute left-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-[#ECFDF3] px-3 py-1 text-xs font-medium text-[#027A48]">
-          <Check className="h-3.5 w-3.5" />
+          <Image
+            src="/images/landing-page/icon.svg"
+            alt="Check Icon"
+            width={16}
+            height={16}
+            className="h-4 w-4 object-contain"
+          />
           {plan.highlight}
         </div>
       )}
@@ -57,7 +63,13 @@ const PricingCard = ({ plan }: PricingCardProps) => {
             className="flex items-center gap-3 text-sm font-medium text-muted"
           >
             <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
-              <Check className="h-3 w-3 text-[#2EA83A]" />
+              <Image
+                src="/images/landing-page/icon.png"
+                alt="Check Icon"
+                width={16}
+                height={16}
+                className="h-4 w-4 object-contain"
+              />
             </div>
             {feature}
           </li>

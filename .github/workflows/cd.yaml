@@ -75,12 +75,12 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           request_pty: false
           script: |
+            set -e
             cd /var/www/personal-trainer/frontend/staging
             pnpm install --prod --frozen-lockfile
             sudo -n /usr/bin/systemctl restart personal-trainer-frontend-staging
-            echo "RESTART_EXIT: $?"
-            sudo -n /usr/bin/systemctl status personal-trainer-frontend-staging --no-pager
-            echo "STATUS_EXIT: $?"
+            sleep 5
+            sudo -n /usr/bin/systemctl status personal-trainer-frontend-staging
 
   deploy-production:
     if: github.ref == 'refs/heads/main'
@@ -151,4 +151,4 @@ jobs:
             pnpm install --prod --frozen-lockfile
             sudo -n /usr/bin/systemctl restart personal-trainer-frontend-production
             sleep 5
-            sudo -n /usr/bin/systemctl status personal-trainer-frontend-production --no-pager
+            sudo -n /usr/bin/systemctl status personal-trainer-frontend-production

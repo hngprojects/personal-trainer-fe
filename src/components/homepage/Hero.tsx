@@ -25,9 +25,9 @@ const Hero = () => {
             Live Trainer Accountability
           </div>
 
-          <h1 className="mb-6 max-w-4xl text-4xl font-extrabold tracking-tight text-muted-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mb-6 max-w-4xl text-4xl font-bold tracking-tight text-muted-foreground sm:text-5xl md:text-6xl lg:text-7xl">
             Stay Consistent With Real{' '}
-            <span className="relative mt-2 inline-block bg-primary px-4 py-1 text-white">
+            <span className="relative mt-2 inline-block bg-primary px-4 py-0.5 text-white">
               Trainers
             </span>
           </h1>

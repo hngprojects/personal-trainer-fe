@@ -75,34 +75,12 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           request_pty: false
           script: |
-            echo "=== whoami ==="
-            whoami
-            echo "=== pwd before cd ==="
-            pwd
-            echo "=== sudo BEFORE cd and pnpm ==="
-            sudo -n /usr/bin/systemctl restart personal-trainer-frontend-staging 2>&1
-            echo "exit_before_anything: $?"
-
-            echo "=== cd to deploy dir ==="
             cd /var/www/personal-trainer/frontend/staging
-            pwd
-            echo "=== sudo AFTER cd, BEFORE pnpm ==="
-            sudo -n /usr/bin/systemctl restart personal-trainer-frontend-staging 2>&1
-            echo "exit_after_cd: $?"
-
-            echo "=== running pnpm install ==="
             pnpm install --prod --frozen-lockfile
-            echo "=== sudo AFTER pnpm ==="
-            sudo -n /usr/bin/systemctl restart personal-trainer-frontend-staging 2>&1
-            echo "exit_after_pnpm: $?"
-
-            echo "=== sudo -ln (what sudo thinks I can do) ==="
-            sudo -ln 2>&1
-
-            echo "=== env ==="
-            env | sort
-
-            echo "=== DONE ==="
+            sudo -n /usr/bin/systemctl restart personal-trainer-frontend-staging
+            echo "RESTART_EXIT: $?"
+            sudo -n /usr/bin/systemctl status personal-trainer-frontend-staging --no-pager
+            echo "STATUS_EXIT: $?"
 
   deploy-production:
     if: github.ref == 'refs/heads/main'

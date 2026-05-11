@@ -77,9 +77,9 @@ jobs:
             set -e
             cd /var/www/personal-trainer/frontend/staging
             pnpm install --prod --frozen-lockfile
-            sudo systemctl restart personal-trainer-frontend-staging
+            sudo /usr/bin/systemctl restart personal-trainer-frontend-staging
             sleep 5
-            sudo systemctl status personal-trainer-frontend-staging --no-pager
+            sudo /usr/bin/systemctl status personal-trainer-frontend-staging --no-pager
 
   deploy-production:
     if: github.ref == 'refs/heads/main'
@@ -147,6 +147,6 @@ jobs:
             set -e
             cd /var/www/personal-trainer/frontend/production
             pnpm install --prod --frozen-lockfile
-            sudo systemctl restart personal-trainer-frontend-production
+            sudo /usr/bin/systemctl restart personal-trainer-frontend-production
             sleep 5
-            sudo systemctl status personal-trainer-frontend-production --no-pager
+            sudo /usr/bin/systemctl status personal-trainer-frontend-production --no-pager

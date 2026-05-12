@@ -1,9 +1,7 @@
 name: Deploy Frontend
 
 on:
-  workflow_run:
-    workflows: ['CI Frontend']
-    types: [completed]
+  push:
     branches:
       - staging
       - main
@@ -15,8 +13,45 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  build_lint_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'schedule' && 'main' || github.ref }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint code
+        run: pnpm lint
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Run Trivy vulnerability scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1'
+
   deploy-staging:
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'staging'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
+    needs: build_lint_test
     name: Deploy Frontend Staging
     runs-on: ubuntu-latest
     environment: staging
@@ -24,8 +59,6 @@ jobs:
     steps:
       - name: Checkout frontend repo
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_sha || 'main' }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -85,10 +118,11 @@ jobs:
             pnpm install --prod --frozen-lockfile
             sudo systemctl restart personal-trainer-frontend-staging
             sleep 5
-            sudo systemctl status personal-trainer-frontend-staging --no-pager
+            sudo systemctl status personal-trainer-frontend-staging
 
   deploy-production:
-    if: github.event_name == 'schedule' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    needs: build_lint_test
     name: Deploy Frontend Production
     runs-on: ubuntu-latest
     environment: production
@@ -97,7 +131,7 @@ jobs:
       - name: Checkout frontend repo
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || 'main' }}
+          ref: ${{ github.event_name == 'schedule' && 'main' || github.ref }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -157,4 +191,4 @@ jobs:
             pnpm install --prod --frozen-lockfile
             sudo systemctl restart personal-trainer-frontend-production
             sleep 5
-            sudo systemctl status personal-trainer-frontend-production --no-pager
+            sudo systemctl status personal-trainer-frontend-production

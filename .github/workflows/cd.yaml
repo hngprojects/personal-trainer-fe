@@ -118,8 +118,16 @@ jobs:
             cd /var/www/personal-trainer/frontend/staging
             pnpm install --prod --frozen-lockfile
             sudo -n /usr/bin/systemctl restart personal-trainer-frontend-staging
-            sleep 5
+            for i in $(seq 1 30); do
+              if systemctl is-active --quiet personal-trainer-frontend-staging; then
+                echo "Service active after ${i}s"
+                exit 0
+              fi
+              sleep 1
+            done
+            echo "Service failed to become active after 30s"
             sudo -n /usr/bin/systemctl status personal-trainer-frontend-staging
+            exit 1
 
   deploy-production:
     if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
@@ -192,5 +200,13 @@ jobs:
             cd /var/www/personal-trainer/frontend/production
             pnpm install --prod --frozen-lockfile
             sudo -n /usr/bin/systemctl restart personal-trainer-frontend-production
-            sleep 5
+            for i in $(seq 1 30); do
+              if systemctl is-active --quiet personal-trainer-frontend-production; then
+                echo "Service active after ${i}s"
+                exit 0
+              fi
+              sleep 1
+            done
+            echo "Service failed to become active after 30s"
             sudo -n /usr/bin/systemctl status personal-trainer-frontend-production
+            exit 1

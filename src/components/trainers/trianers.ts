@@ -17,6 +17,7 @@ export type Trainer = {
   sessions: number
   specialties: string[]
   image: string
+  rating?: number
   categories: Category[]
 }
 

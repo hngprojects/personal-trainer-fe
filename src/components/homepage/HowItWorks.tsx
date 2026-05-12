@@ -137,7 +137,7 @@ const HowItWorks = () => {
               </div>
               <div className="relative w-full flex-1">
                 <Image
-                  src="/images/landing-page/step-1.png"
+                  src="/images/landing-page/ste1.png"
                   alt={steps[0].title}
                   fill
                   sizes="true"

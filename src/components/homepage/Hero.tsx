@@ -6,7 +6,7 @@ import { Button } from '../ui/button'
 
 const Hero = () => {
   return (
-    <section className="md:pt-38 relative w-full overflow-hidden pt-32">
+    <section className="relative w-full overflow-hidden pt-28 md:pt-48">
       <div
         className="absolute inset-0 z-0 opacity-[0.03]"
         style={{
@@ -20,12 +20,12 @@ const Hero = () => {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="flex flex-col items-center text-center">
-          <div className="mb-6 inline-flex items-center rounded-full border border-primary bg-transparent px-4 py-1.5 text-xs font-semibold text-blue-600 shadow-sm">
-            <span className="mr-2 h-2 w-2 animate-pulse rounded-full bg-blue-600"></span>
+          <div className="mb-6 inline-flex items-center rounded-full border border-primary bg-transparent px-4 py-1.5 text-xs font-semibold text-primary shadow-sm">
+            <span className="mr-2 h-2 w-2 animate-pulse rounded-full bg-primary"></span>
             Live Trainer Accountability
           </div>
 
-          <h1 className="mb-6 max-w-4xl text-4xl font-bold tracking-tight text-muted-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mb-6 max-w-4xl text-4xl font-bold tracking-tight text-muted-foreground sm:text-5xl md:text-6xl">
             Stay Consistent With Real{' '}
             <span className="relative mt-2 inline-block bg-primary px-4 py-0.5 text-white">
               Trainers
@@ -33,9 +33,9 @@ const Hero = () => {
           </h1>
 
           <p className="mb-10 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-            FitCall pairs you with a real Nigerian trainer who calls you for
-            every session, Zoom, WhatsApp, or audio. Real accountability,
-            structured workouts, zero excuses.
+            FitCall pairs you with a real trainer who calls you for every
+            session, Zoom, WhatsApp, or audio. Real accountability, structured
+            workouts, zero excuses.
           </p>
 
           <div className="mb-16 flex flex-col items-center gap-4 sm:flex-row">

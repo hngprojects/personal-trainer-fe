@@ -88,7 +88,6 @@ const WhyChoose = () => {
                     onClick={() => setActiveIndex(index)}
                     className="relative flex h-[122px] items-center px-4"
                   >
-                    {/* Active Vertical Line Indicator */}
                     {isActive && (
                       <motion.div
                         layoutId="activeLine"

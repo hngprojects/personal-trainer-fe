@@ -27,7 +27,7 @@ const PricingCard = ({ plan }: PricingCardProps) => {
       {isHighlighted && (
         <div className="absolute left-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-[#ECFDF3] px-3 py-1 text-xs font-medium text-[#027A48]">
           <Image
-            src="/images/landing-page/icon.png"
+            src="/images/landing-page/icons/icon.svg"
             alt="Check Icon"
             width={16}
             height={16}
@@ -62,7 +62,7 @@ const PricingCard = ({ plan }: PricingCardProps) => {
           >
             <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
               <Image
-                src="/images/landing-page/icon.png"
+                src="/images/landing-page/icons/icon.svg"
                 alt="Check Icon"
                 width={16}
                 height={16}

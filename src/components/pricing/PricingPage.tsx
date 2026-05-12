@@ -7,7 +7,7 @@ import { pricingPlans } from './pricing'
 
 const PricingSection = () => {
   return (
-    <section className="bg-white pb-16 pt-24 md:py-28">
+    <section className="bg-white pb-16">
       <div className="container max-w-7xl px-4">
         <div className="md:[&_h2]:text-5xl lg:[&_p]:text-lg">
           <SectionHeader

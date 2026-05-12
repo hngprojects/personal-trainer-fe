@@ -1,8 +1,15 @@
-export const joinWaitlist = async (email: string) => {
+export interface WaitlistPayload {
+  email: string
+  phone_number: string
+  location: string
+  name: string
+}
+
+export const joinWaitlist = async (payload: WaitlistPayload) => {
   const res = await fetch('/api/waitlist', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email }),
+    body: JSON.stringify(payload),
   })
 
   const data = await res.json()

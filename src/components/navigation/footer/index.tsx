@@ -25,8 +25,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="max-w-xs text-base leading-relaxed text-muted-foreground">
-              Connecting you with expert Nigerian trainers for real
-              accountability.
+              Connecting you with expert trainers for real accountability.
             </p>
           </div>
 

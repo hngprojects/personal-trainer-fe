@@ -5,16 +5,12 @@ const Logo = () => {
   return (
     <Link href="/" className="flex items-center gap-2">
       <Image
-        src="/logo.svg"
+        src="/images/logo-text.svg"
         alt="FitCall logo"
-        width={40}
+        width={132}
         height={40}
-        className="h-[36px] w-[36px] object-contain sm:h-[42px] sm:w-[42px]"
+        className="h-10 w-[132px] object-contain"
       />
-
-      <h1 className="text-xl font-semibold leading-none sm:text-3xl lg:text-4xl">
-        FitCall
-      </h1>
     </Link>
   )
 }

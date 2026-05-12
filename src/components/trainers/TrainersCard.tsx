@@ -10,7 +10,7 @@ const TrainerCard = ({ trainer }: Props) => {
   const firstName = trainer.name.split(' ')[0]
 
   return (
-    <div className="flex h-full max-w-[350px] flex-col overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm">
+    <div className="h-[470px] max-w-[350px] overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
       <div className="relative h-[284px] w-full">
         <Image
           src={trainer.image}
@@ -20,7 +20,7 @@ const TrainerCard = ({ trainer }: Props) => {
         />
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
+      <div className="p-4">
         <div className="mb-1 flex items-center justify-between">
           <span className="font-semibold text-muted-foreground">
             {trainer.name}
@@ -34,7 +34,7 @@ const TrainerCard = ({ trainer }: Props) => {
           {trainer.specialties.join(' · ')}
         </p>
 
-        <Button className="mt-auto w-full rounded-md">Book {firstName}</Button>
+        <Button className="w-full">Book {firstName}</Button>
       </div>
     </div>
   )

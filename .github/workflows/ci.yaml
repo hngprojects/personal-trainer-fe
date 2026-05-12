@@ -2,15 +2,10 @@ name: CI Frontend
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
-      - staging
-      - dev
 concurrency:
   group: ci-frontend-${{ github.ref }}
   cancel-in-progress: true
-  
+
 jobs:
   build_lint_test:
     runs-on: ubuntu-latest

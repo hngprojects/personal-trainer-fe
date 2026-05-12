@@ -4,7 +4,7 @@ import SectionHeader from '../ui/SectionHeader'
 
 const Features = () => {
   return (
-    <section className="mt-12 w-full pb-14 md:mt-24">
+    <section id="features" className="mt-12 w-full scroll-mt-28 pb-14 md:mt-24">
       <div className="container flex flex-col">
         <SectionHeader
           badge="POWERFUL FEATURES"

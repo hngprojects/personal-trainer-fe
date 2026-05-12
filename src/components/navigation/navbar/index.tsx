@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
+        'fixed left-0 right-0 top-0 z-50 border-b border-gray-200 transition-all duration-300',
         scrolling
           ? 'bg-white/90 py-2.5 shadow-md backdrop-blur-md'
           : 'bg-transparent py-4 md:py-6'

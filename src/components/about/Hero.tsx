@@ -5,7 +5,7 @@ import SectionHeader from '../ui/SectionHeader'
 
 const Hero = () => {
   return (
-    <section className="md:pt-38 relative w-full overflow-hidden pt-32">
+    <section className="relative w-full overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="md:[&_h2]:text-5xl lg:[&_p]:text-lg">
           <SectionHeader

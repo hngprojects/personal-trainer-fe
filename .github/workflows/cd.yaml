@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout frontend repo
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || 'main' }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -94,6 +96,8 @@ jobs:
     steps:
       - name: Checkout frontend repo
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || 'main' }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4

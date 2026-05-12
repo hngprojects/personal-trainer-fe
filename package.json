@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky",
+    "prepare": "husky || true",
     "turbo": "next dev --turbo",
     "format": "pnpm lint --fix && pnpm prettier --write .",
     "check-types": "tsc --pretty --noEmit",

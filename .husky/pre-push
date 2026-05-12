@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+echo '🏗️👷 Building the app before pushing' 🔍🧐
+
+# Check the app builds locally before pushing
+pnpm run build ||
+	(
+		echo '🚫🚀 Push blocked. The app failed to build locally.
+                Fix the build errors listed above, commit your changes, and try to push again.'
+		false
+	)
+
+# If everything passes... Now we can push
+echo '✅✅✅✅ Local build passed. Push it real good. ✅✅✅✅'
+

@@ -39,7 +39,7 @@ const CoreBeliefs = () => {
                 key={index}
                 className="rounded-2xl border border-gray-100 bg-white p-6 transition-shadow hover:shadow-sm"
               >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primarybadge">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                   <Image
                     src={item.icon}
                     alt={item.title}

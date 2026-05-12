@@ -16,8 +16,8 @@ const CTASection = () => {
               and feel the difference one phone call makes.
             </p>
 
-            <Button className="mt-10 min-w-[300px] bg-white font-bold text-primary transition-transform hover:scale-105 hover:bg-blue-50 hover:text-blue-900 active:scale-95">
-              <Link href="/pricing">Download FitCall</Link>
+            <Button className="mt-10 min-w-[300px] bg-white font-bold text-primary transition-transform hover:scale-105 active:scale-95">
+              <Link href="/pricing">Get Fit Now</Link>
             </Button>
           </div>
         </div>

@@ -15,7 +15,7 @@ const TrainerSection = () => {
       : trainers.filter((t) => t.categories.includes(activeCategory))
 
   return (
-    <section className="w-full py-14 md:py-24">
+    <section className="w-full pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="md:[&_h2]:text-5xl lg:[&_p]:text-lg">
           <SectionHeader

@@ -5,12 +5,12 @@ import StartTrialBanner from '~/components/about/StartTrialBanner'
 
 const AboutUs = () => {
   return (
-    <div className="">
+    <main className="w-full bg-secondary pt-28 md:pt-48">
       <Hero />
       <ProblemSolution />
       <CoreBeliefs />
       <StartTrialBanner />
-    </div>
+    </main>
   )
 }
 

@@ -20,16 +20,14 @@ const PricingCard = ({ plan }: PricingCardProps) => {
 
   return (
     <div
-      className={`relative flex flex-col rounded-2xl border-2 bg-white p-8 transition-all ${
-        isHighlighted
-          ? 'border-primary shadow-lg ring-1 ring-[#B2DDFF]'
-          : 'border-[#D1D1D1]'
+      className={`relative flex h-fit flex-col rounded-2xl border bg-white p-8 transition-all ${
+        isHighlighted ? 'border-[#2272AD] shadow-lg' : 'border-[#D1D1D1]'
       }`}
     >
       {isHighlighted && (
         <div className="absolute left-6 top-6 inline-flex items-center gap-1.5 rounded-full bg-[#ECFDF3] px-3 py-1 text-xs font-medium text-[#027A48]">
           <Image
-            src="/images/landing-page/icon.svg"
+            src="/images/landing-page/icon.png"
             alt="Check Icon"
             width={16}
             height={16}

@@ -72,40 +72,13 @@ const Hero = () => {
             </Button>
           </div>
 
-          <div className="relative min-h-[21vh] w-full max-w-5xl md:h-[500px] lg:h-[600px]">
-            <div
-              className="absolute bottom-0 left-0 w-[38%]"
-              style={{ transform: 'translateY(0)' }}
-            >
-              <Image
-                src="/images/landing-page/hero2.png"
-                alt="App UI Left"
-                width={500}
-                height={600}
-                className="h-auto w-full opacity-80 shadow-2xl"
-              />
-            </div>
-
-            <div className="absolute bottom-0 left-1/2 z-10 w-[46%] -translate-x-1/2">
-              <Image
-                src="/images/landing-page/hero1.png"
-                alt="App UI Center"
-                width={500}
-                height={700}
-                className="h-auto w-full shadow-2xl transition-transform hover:scale-105"
-                priority
-              />
-            </div>
-
-            <div className="absolute bottom-0 right-0 w-[38%]">
-              <Image
-                src="/images/landing-page/hero2.png"
-                alt="App UI Right"
-                width={500}
-                height={600}
-                className="h-auto w-full opacity-80 shadow-2xl"
-              />
-            </div>
+          <div className="relative h-[300px] w-full md:h-[776px]">
+            <Image
+              src="/images/landing-page/hero.png"
+              alt="Landing Page Hero"
+              fill
+              className="w-full rounded-[32px] object-cover"
+            />
           </div>
         </div>
       </div>

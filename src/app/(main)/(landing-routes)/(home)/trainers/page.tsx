@@ -4,10 +4,10 @@ import TrainerSection from '~/components/trainers/Trainers'
 
 const Trainers = () => {
   return (
-    <div>
+    <main className="w-full pt-28 md:pt-48">
       <TrainerSection />
       <FAQSection />
-    </div>
+    </main>
   )
 }
 

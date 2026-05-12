@@ -4,10 +4,10 @@ import PricingSection from '~/components/pricing/PricingPage'
 
 const Pricing = () => {
   return (
-    <div>
+    <main className="w-full pt-28 md:pt-48">
       <PricingSection />
       <FAQSection />
-    </div>
+    </main>
   )
 }
 

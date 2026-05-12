@@ -11,7 +11,7 @@ import TrainerReady from '~/components/squeeze/TrainerReady'
 
 const WaitList = () => {
   return (
-    <section className="full py-6">
+    <main className="w-full pt-28 md:pt-48">
       <Hero />
       <IntegrationsBar />
       <section className="bg-secondary py-6">
@@ -23,7 +23,7 @@ const WaitList = () => {
       <FitnessLifestyle />
       <TrainerReady />
       <SqueezeFooter />
-    </section>
+    </main>
   )
 }
 
